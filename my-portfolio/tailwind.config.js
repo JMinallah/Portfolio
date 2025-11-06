@@ -4,8 +4,18 @@ export default {
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
+  darkMode: 'class',
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        // Refer to CSS variables so the runtime theme (light/dark) controls colors
+        primary: 'var(--color-primary)',
+        secondary: 'var(--color-secondary)',
+        background: 'var(--color-bg)',
+        text: 'var(--color-text)',
+        muted: 'var(--color-muted)'
+      }
+    },
   },
   plugins: [],
 }

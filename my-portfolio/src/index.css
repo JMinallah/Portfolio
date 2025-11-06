@@ -1,3 +1,46 @@
+/*
+	Color tokens (light + dark) defined as CSS variables.
+	Use the `.dark` class on a top-level element (usually <html>) to switch to dark mode.
+
+	The RGB variables are provided for any places where you want to use an alpha value
+	with `rgb()`/`rgba()` or `color()` functions.
+*/
+:root {
+	--color-bg: #F8FAFC; /* soft off-white (light) */
+	--color-primary: #6366F1; /* soft indigo */
+	--color-primary-rgb: 99 102 241;
+	--color-secondary: #A78BFA; /* lavender */
+	--color-secondary-rgb: 167 139 250;
+	--color-text: #1E293B; /* dark slate */
+	--color-text-rgb: 30 41 59;
+	--color-muted: #CBD5E1; /* muted gray */
+	--color-muted-rgb: 203 213 225;
+}
+
+/* Dark mode tokens */
+.dark {
+	--color-bg: #0F172A; /* deep navy/charcoal */
+	--color-primary: #818CF8;
+	--color-primary-rgb: 129 140 248;
+	--color-secondary: #C4B5FD;
+	--color-secondary-rgb: 196 181 253;
+	--color-text: #F1F5F9; /* soft white */
+	--color-text-rgb: 241 245 249;
+	--color-muted: #334155;
+	--color-muted-rgb: 51 65 85;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Base layer to apply background & text using the tokens */
+@layer base {
+	html { color-scheme: light; }
+	.dark html, .dark { color-scheme: dark; }
+
+	body {
+		background-color: var(--color-bg);
+		color: var(--color-text);
+	}
+}
