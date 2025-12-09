@@ -4,30 +4,32 @@
 
 	The RGB variables are provided for any places where you want to use an alpha value
 	with `rgb()`/`rgba()` or `color()` functions.
+	
+	Palette: #2b2d42 (dark blue-gray), #8d99ae (blue-gray), #edf2f4 (light gray), #ef233c (red), #d90429 (dark red)
 */
 :root {
-	--color-bg: #F8FAFC; /* soft off-white (light) */
-	--color-primary: #6366F1; /* soft indigo */
-	--color-primary-rgb: 99 102 241;
-	--color-secondary: #A78BFA; /* lavender */
-	--color-secondary-rgb: 167 139 250;
-	--color-text: #1E293B; /* dark slate */
-	--color-text-rgb: 30 41 59;
-	--color-muted: #CBD5E1; /* muted gray */
-	--color-muted-rgb: 203 213 225;
+	--color-bg: #edf2f4; /* light gray background */
+	--color-primary: #ef233c; /* red accent */
+	--color-primary-rgb: 239 35 60;
+	--color-secondary: #d90429; /* dark red accent */
+	--color-secondary-rgb: 217 4 41;
+	--color-text: #2b2d42; /* dark blue-gray text */
+	--color-text-rgb: 43 45 66;
+	--color-muted: #8d99ae; /* blue-gray muted */
+	--color-muted-rgb: 141 153 174;
 }
 
 /* Dark mode tokens */
 .dark {
-	--color-bg: #0F172A; /* deep navy/charcoal */
-	--color-primary: #818CF8;
-	--color-primary-rgb: 129 140 248;
-	--color-secondary: #C4B5FD;
-	--color-secondary-rgb: 196 181 253;
-	--color-text: #F1F5F9; /* soft white */
-	--color-text-rgb: 241 245 249;
-	--color-muted: #334155;
-	--color-muted-rgb: 51 65 85;
+	--color-bg: #2b2d42; /* dark blue-gray background */
+	--color-primary: #ef233c; /* red accent */
+	--color-primary-rgb: 239 35 60;
+	--color-secondary: #d90429; /* dark red accent */
+	--color-secondary-rgb: 217 4 41;
+	--color-text: #edf2f4; /* light gray text */
+	--color-text-rgb: 237 242 244;
+	--color-muted: #8d99ae; /* blue-gray muted */
+	--color-muted-rgb: 141 153 174;
 }
 
 @tailwind base;
