@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom'
+
 export default function MobileMenu({ open, onClose }) {
   if (!open) return null
 
@@ -21,9 +23,9 @@ export default function MobileMenu({ open, onClose }) {
           </div>
 
           <nav className="space-y-2">
-            <a href="/" className="block px-3 py-2 rounded-md hover:bg-primary/6">About</a>
-            <a href="/projects" className="block px-3 py-2 rounded-md hover:bg-primary/6">Projects</a>
-            <a href="/contact" className="block px-3 py-2 rounded-md hover:bg-primary/6">Contact</a>
+            <Link to="/" onClick={onClose} className="block px-3 py-2 rounded-md hover:bg-primary/6">About</Link>
+            <Link to="/projects" onClick={onClose} className="block px-3 py-2 rounded-md hover:bg-primary/6">Projects</Link>
+            <Link to="/contact" onClick={onClose} className="block px-3 py-2 rounded-md hover:bg-primary/6">Contact</Link>
           </nav>
 
           <div className="mt-8">

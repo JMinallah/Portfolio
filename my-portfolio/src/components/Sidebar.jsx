@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import ThemeToggle from './ThemeToggle'
 
 export default function Sidebar() {
@@ -15,18 +16,18 @@ export default function Sidebar() {
         </div>
 
         <nav className="mt-8 space-y-1" aria-label="Sidebar">
-          <a href="/" className="group flex items-center gap-3 px-3 py-2 rounded-md hover:bg-primary/6"> 
+          <Link to="/" className="group flex items-center gap-3 px-3 py-2 rounded-md hover:bg-primary/6"> 
             <span className="w-6 text-primary">●</span>
             <span className="text-sm">About</span>
-          </a>
-          <a href="/projects" className="group flex items-center gap-3 px-3 py-2 rounded-md hover:bg-primary/6">
+          </Link>
+          <Link to="/projects" className="group flex items-center gap-3 px-3 py-2 rounded-md hover:bg-primary/6">
             <span className="w-6 text-primary">●</span>
             <span className="text-sm">Projects</span>
-          </a>
-          <a href="/contact" className="group flex items-center gap-3 px-3 py-2 rounded-md hover:bg-primary/6">
+          </Link>
+          <Link to="/contact" className="group flex items-center gap-3 px-3 py-2 rounded-md hover:bg-primary/6">
             <span className="w-6 text-primary">●</span>
             <span className="text-sm">Contact</span>
-          </a>
+          </Link>
         </nav>
       </div>
 

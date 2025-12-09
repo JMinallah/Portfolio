@@ -25,7 +25,7 @@ export default function MainLayout({ children }) {
 
         <footer className="border-t border-muted mt-16">
           <div className="max-w-6xl mx-auto px-6 py-6 flex items-center justify-between">
-            <div className="text-sm text-muted">© {new Date().getFullYear()} Your Name</div>
+            <div className="text-sm text-muted">© {new Date().getFullYear()} JMinallah</div>
             <div className="text-sm text-muted">Built with ❤️</div>
           </div>
         </footer>
