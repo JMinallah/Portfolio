@@ -1,12 +1,21 @@
 import './App.css'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import MainLayout from './layouts/MainLayout'
+import Home from './pages/Home'
+import Projects from './pages/Projects'
+import About from './pages/About'
+import Contact from './pages/Contact'
 
 function App() {
   return (
-    <>
-      <h1 className="text-3xl font-bold underline">
-        Hello world!
-      </h1>
-    </>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<MainLayout><Home/></MainLayout>} />
+        <Route path="/projects" element={<MainLayout><Projects/></MainLayout>} />
+        <Route path="/about" element={<MainLayout><About/></MainLayout>} />
+        <Route path="/contact" element={<MainLayout><Contact/></MainLayout>} />
+      </Routes>
+    </BrowserRouter>
   )
 }
 
