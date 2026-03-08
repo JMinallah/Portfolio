@@ -1,29 +1,234 @@
+import { Link } from 'react-router-dom'
+
+const featuredProjects = [
+  {
+    title: 'Project Alpha',
+    description:
+      'A full-stack web application with real-time features and user authentication. Built with React, Node.js, and PostgreSQL.',
+    tags: ['React', 'Node.js', 'PostgreSQL'],
+    github: '#',
+    live: '#',
+  },
+  {
+    title: 'Project Beta',
+    description:
+      'Responsive e-commerce storefront with a custom design system, cart functionality, and payment integration.',
+    tags: ['React', 'Tailwind CSS', 'Stripe'],
+    github: '#',
+    live: '#',
+  },
+  {
+    title: 'Project Gamma',
+    description:
+      'RESTful API service with JWT authentication, rate limiting, and comprehensive Swagger documentation.',
+    tags: ['Node.js', 'Express', 'MongoDB'],
+    github: '#',
+    live: '#',
+  },
+]
+
+function GithubIcon() {
+  return (
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z" />
+    </svg>
+  )
+}
+
+function ExternalLinkIcon() {
+  return (
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+      <polyline points="15 3 21 3 21 9" />
+      <line x1="10" y1="14" x2="21" y2="3" />
+    </svg>
+  )
+}
+
+function ImagePlaceholder() {
+  return (
+    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1">
+      <rect x="3" y="3" width="18" height="18" rx="2" />
+      <circle cx="8.5" cy="8.5" r="1.5" />
+      <path d="m21 15-5-5L5 21" />
+    </svg>
+  )
+}
+
 export default function Home() {
   return (
-    <>
-      <section className="mb-12">
-        <h1 className="text-4xl font-bold mb-2">Hello — I'm Your Name</h1>
-        <p className="text-muted">I build delightful web experiences and interfaces.</p>
-      </section>
+    <div>
+      {/* ─── Hero ─── */}
+      <section className="min-h-[calc(100vh-5rem)]">
+        <div className="max-w-6xl mx-auto px-6 pt-0 pb-2 w-full">
+          <div className="max-w-3xl">
 
-      <section id="projects">
-        <h2 className="text-2xl font-semibold mb-4">Featured projects</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-          <article className="p-6 rounded-lg border border-muted hover:shadow-lg transition">
-            <h3 className="font-semibold">Project One</h3>
-            <p className="text-sm text-muted mt-2">Short description about what you built and why it matters.</p>
-          </article>
-          <article className="p-6 rounded-lg border border-muted hover:shadow-lg transition">
-            <h3 className="font-semibold">Project Two</h3>
-            <p className="text-sm text-muted mt-2">Short description about this project.</p>
-          </article>
+            {/* Headline */}
+            <h1 data-aos="fade-up" className="text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.1] mb-6">
+              Hola, I&apos;m{' '}
+              <span className="text-primary">Jovia</span>
+              <br />
+              <span className="text-text/80">Minallah Matata.</span>
+            </h1>
+
+            {/* Sub-headline */}
+            <p data-aos="fade-up" data-aos-delay="100" className="text-lg sm:text-xl text-muted max-w-xl mb-10 leading-relaxed">
+              FullStack Developer crafting clean, performant web experiences. I turn
+              complex problems into elegant, user-first solutions.
+            </p>
+
+            {/* CTAs */}
+            <div data-aos="fade-up" data-aos-delay="200" className="flex flex-wrap gap-3 mb-12">
+              <Link
+                to="/projects"
+                className="px-6 py-3 bg-primary text-white font-medium rounded-md hover:bg-secondary transition-colors duration-200 text-sm"
+              >
+                View My Work
+              </Link>
+              <Link
+                to="/contact"
+                className="px-6 py-3 border border-muted/50 font-medium rounded-md hover:border-primary hover:text-primary transition-all duration-200 text-sm"
+              >
+                Let&apos;s Talk
+              </Link>
+            </div>
+
+            {/* Social links */}
+            <div data-aos="fade-up" data-aos-delay="300" className="flex items-center gap-4">
+              <span className="text-sm text-muted">Find me on</span>
+              <div className="flex items-center gap-3">
+                <a
+                  href="https://github.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="GitHub"
+                  className="text-muted hover:text-primary transition-colors"
+                >
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z" />
+                  </svg>
+                </a>
+                <a
+                  href="https://linkedin.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="LinkedIn"
+                  className="text-muted hover:text-primary transition-colors"
+                >
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+                  </svg>
+                </a>
+                <a
+                  href="mailto:you@example.com"
+                  aria-label="Email"
+                  className="text-muted hover:text-primary transition-colors"
+                >
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <rect x="2" y="4" width="20" height="16" rx="2" />
+                    <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
-      <section id="contact" className="mt-12">
-        <h2 className="text-2xl font-semibold mb-4">Contact</h2>
-        <p className="text-muted">Interested in working together? Reach out via email.</p>
+      {/* ─── Featured Projects ─── */}
+      <section className="py-20 border-t border-muted/20">
+        <div className="max-w-6xl mx-auto px-6">
+          <div data-aos="fade-up" className="flex items-end justify-between mb-12">
+            <div>
+              <p className="text-sm text-primary font-medium mb-2 uppercase tracking-widest">Work</p>
+              <h2 className="text-3xl sm:text-4xl font-bold">Featured Projects</h2>
+            </div>
+            <Link
+              to="/projects"
+              className="hidden sm:inline-flex items-center gap-1 text-sm text-muted hover:text-primary transition-colors"
+            >
+              All projects <span>→</span>
+            </Link>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {featuredProjects.map((project, i) => (
+              <article
+                key={project.title}
+                data-aos="fade-up"
+                data-aos-delay={i * 100}
+                className="group flex flex-col p-6 rounded-xl border border-muted/30 hover:border-primary/40 bg-background hover:shadow-lg transition-all duration-300"
+              >
+                {/* Image placeholder */}
+                <div className="w-full h-40 rounded-lg bg-muted/10 mb-5 flex items-center justify-center text-muted/30 group-hover:bg-primary/5 transition-colors">
+                  <ImagePlaceholder />
+                </div>
+
+                {/* Tags */}
+                <div className="flex flex-wrap gap-1.5 mb-3">
+                  {project.tags.map((tag) => (
+                    <span
+                      key={tag}
+                      className="px-2 py-0.5 rounded-full text-xs bg-primary/10 text-primary/80 font-medium"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+
+                <h3 className="font-semibold text-base mb-2 group-hover:text-primary transition-colors">
+                  {project.title}
+                </h3>
+                <p className="text-sm text-muted leading-relaxed flex-1 mb-5">
+                  {project.description}
+                </p>
+
+                <div className="flex items-center gap-5 text-sm mt-auto">
+                  <a
+                    href={project.github}
+                    className="flex items-center gap-1.5 text-muted hover:text-primary transition-colors"
+                  >
+                    <GithubIcon />
+                    Code
+                  </a>
+                  <a
+                    href={project.live}
+                    className="flex items-center gap-1.5 text-muted hover:text-primary transition-colors"
+                  >
+                    <ExternalLinkIcon />
+                    Live Demo
+                  </a>
+                </div>
+              </article>
+            ))}
+          </div>
+
+          <div className="mt-8 text-center sm:hidden">
+            <Link to="/projects" className="text-sm text-primary hover:underline">
+              View all projects →
+            </Link>
+          </div>
+        </div>
       </section>
-    </>
+
+      {/* ─── CTA Strip ─── */}
+      <section className="py-24 border-t border-muted/20">
+        <div data-aos="fade-up" className="max-w-6xl mx-auto px-6 text-center">
+          <h2 className="text-3xl sm:text-4xl font-bold mb-4">
+            Let&apos;s build something great together.
+          </h2>
+          <p className="text-muted mb-8 max-w-lg mx-auto leading-relaxed">
+            I&apos;m always open to new opportunities, collaborations, or just a good chat
+            about tech and ideas.
+          </p>
+          <Link
+            to="/contact"
+            className="inline-flex px-8 py-3 bg-primary text-white font-medium rounded-md hover:bg-secondary transition-colors duration-200 text-sm"
+          >
+            Get in Touch
+          </Link>
+        </div>
+      </section>
+    </div>
   )
 }

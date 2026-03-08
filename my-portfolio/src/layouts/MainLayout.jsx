@@ -1,35 +1,42 @@
-import { useState, useEffect } from 'react'
-import Sidebar from '../components/Sidebar'
-import MobileHeader from '../components/MobileHeader'
-import MobileMenu from '../components/MobileMenu'
+import Navbar from '../components/Navbar'
 
 export default function MainLayout({ children }) {
-  const [mobileOpen, setMobileOpen] = useState(false)
-
-  useEffect(() => {
-    function onKey(e) {
-      if (e.key === 'Escape') setMobileOpen(false)
-    }
-    window.addEventListener('keydown', onKey)
-    return () => window.removeEventListener('keydown', onKey)
-  }, [])
-
   return (
-    <div className="min-h-screen text-text">
-      <Sidebar />
-      <MobileHeader onOpen={() => setMobileOpen(true)} />
-      <MobileMenu open={mobileOpen} onClose={() => setMobileOpen(false)} />
+    <div className="min-h-screen bg-background text-text flex flex-col">
+      <Navbar />
 
-      <main className="md:pl-64">
-        <div className="max-w-6xl mx-auto px-6 py-10">{children}</div>
-
-        <footer className="border-t border-muted mt-16">
-          <div className="max-w-6xl mx-auto px-6 py-6 flex items-center justify-between">
-            <div className="text-sm text-muted">© {new Date().getFullYear()} JMinallah</div>
-            <div className="text-sm text-muted">Built with ❤️</div>
-          </div>
-        </footer>
+      <main className="flex-1">
+        {children}
       </main>
+
+      <footer className="border-t border-muted/20 mt-auto">
+        <div className="max-w-6xl mx-auto px-6 py-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div className="text-sm text-muted">
+            © {new Date().getFullYear()} Jovia Minallah. All rights reserved.
+          </div>
+          <div className="flex items-center gap-5">
+            <a
+              href="https://github.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-sm text-muted hover:text-primary transition-colors"
+            >
+              GitHub
+            </a>
+            <a
+              href="https://linkedin.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-sm text-muted hover:text-primary transition-colors"
+            >
+              LinkedIn
+            </a>
+            <a href="#" className="text-sm text-muted hover:text-primary transition-colors">
+              Resume
+            </a>
+          </div>
+        </div>
+      </footer>
     </div>
   )
 }
