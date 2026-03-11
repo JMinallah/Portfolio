@@ -1,29 +1,35 @@
 import { useState } from 'react'
+import rydrImg from '../assets/rydr-logo.png'
+import portfolioImg from '../assets/logo.png'
+import scaleupImg from '../assets/logo(1).png'
 
 const allProjects = [
   {
-    title: 'Project Alpha',
-    description: 'Full-stack web app with real-time features, user authentication, and a clean dashboard UI.',
-    tags: ['React', 'Node.js', 'PostgreSQL'],
-    category: 'fullstack',
-    github: '#',
-    live: '#',
-  },
-  {
-    title: 'Project Beta',
-    description: 'E-commerce storefront with cart, checkout flow, Stripe payment integration, and order tracking.',
-    tags: ['React', 'Tailwind CSS', 'Stripe'],
+    title: 'Rydr',
+    description: "RYDR is a decentralized ride-sharing application that leverages the power of Polkadot's ecosystem through Moonbase Alpha, an Ethereum-compatible parachain. By combining blockchain technology with real-world transportation needs, RYDR enables trustless, transparent, and secure peer-to-peer ride-sharing with built-in escrow payments.",
+    tags: ['React', 'Node.js', 'Appwrite','Polkadot', 'Moonbase Alpha'],
     category: 'frontend',
-    github: '#',
-    live: '#',
+    github: 'https://github.com/andamagodwin/rydr-frontend',
+    live: 'https://rydr-gamma.vercel.app',
+    image: rydrImg,
   },
   {
-    title: 'Project Gamma',
-    description: 'RESTful API service with JWT authentication, rate limiting, input validation, and Swagger docs.',
+    title: 'My Portfolio',
+    description: 'A personal portfolio built with React, Vite, and Tailwind CSS — showcasing my projects, skills, and experience with smooth AOS animations, dark mode support, and a clean responsive design.',
+    tags: ['React', 'Tailwind CSS', 'Vite'],
+    category: 'fullstack',
+    github: 'https://github.com/JMinallah/Portfolio',
+    live: 'https://portfolio-rho-seven-69.vercel.app/',
+    image: portfolioImg,
+  },
+  {
+    title: 'ScaleUp',
+    description: 'ScaleUp is a platform built to help early-stage startups and entrepreneurs access the tools, mentorship, and community they need to grow — from idea validation through to product launch.',
     tags: ['Node.js', 'Express', 'MongoDB'],
-    category: 'backend',
-    github: '#',
+    category: 'frontend',
+    github: 'https://github.com/Scaleup-Build/scaleup-website-frontend',
     live: '#',
+    image: scaleupImg,
   },
   {
     title: 'Project Delta',
@@ -114,9 +120,11 @@ export default function Projects() {
               data-aos-delay={i * 80}
               className="group flex flex-col p-6 rounded-xl border border-muted/30 hover:border-primary/40 bg-background hover:shadow-lg transition-all duration-300"
             >
-              {/* Image placeholder */}
-              <div className="w-full h-36 rounded-lg bg-muted/10 mb-5 flex items-center justify-center text-muted/30 group-hover:bg-primary/5 transition-colors">
-                <ImagePlaceholder />
+              {/* Image */}
+              <div className="w-full aspect-video rounded-lg overflow-hidden bg-muted/10 mb-5 flex items-center justify-center text-muted/30 group-hover:bg-primary/5 transition-colors">
+                {project.image
+                  ? <img src={project.image} alt={project.title} className="w-full h-full object-contain p-3" />
+                  : <ImagePlaceholder />}
               </div>
 
               {/* Category badge */}

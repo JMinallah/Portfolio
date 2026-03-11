@@ -42,7 +42,7 @@ export default function About() {
             <img
               src={image}
               alt="Jovia Minallah"
-              className="w-full h-full object-cover"
+              className="w-full h-full object-cover object-top"
             />
           </div>
         </div>

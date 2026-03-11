@@ -1,4 +1,7 @@
 import { Link } from 'react-router-dom'
+import rydrImg from '../assets/rydr-logo.png'
+import portfolioImg from '../assets/logo.png'
+import scaleupImg from '../assets/logo(1).png'
 
 function GithubIcon() {
   return (
@@ -30,28 +33,31 @@ function ImagePlaceholder() {
 
 const featuredProjects = [
   {
-    title: 'Project Alpha',
+    title: 'Rydr',
     description:
-      'A full-stack web application with real-time features and user authentication. Built with React, Node.js, and PostgreSQL.',
-    tags: ['React', 'Node.js', 'PostgreSQL'],
-    github: '#',
-    live: '#',
+      "RYDR is a decentralized ride-sharing app built on Polkadot's Moonbase Alpha parachain, enabling trustless peer-to-peer rides with built-in escrow payments.",
+    tags: ['React', 'Node.js', 'Appwrite', 'Polkadot'],
+    github: 'https://github.com/andamagodwin/rydr-frontend',
+    live: 'https://rydr-gamma.vercel.app',
+    image: rydrImg,
   },
   {
-    title: 'Project Beta',
+    title: 'My Portfolio',
     description:
-      'Responsive e-commerce storefront with a custom design system, cart functionality, and payment integration.',
-    tags: ['React', 'Tailwind CSS', 'Stripe'],
-    github: '#',
-    live: '#',
+      'Personal portfolio built with React, Vite, and Tailwind CSS — featuring smooth AOS animations, dark mode support, and a clean responsive design.',
+    tags: ['React', 'Tailwind CSS', 'Vite'],
+    github: 'https://github.com/JMinallah/Portfolio',
+    live: 'https://portfolio-rho-seven-69.vercel.app/',
+    image: portfolioImg,
   },
   {
-    title: 'Project Gamma',
+    title: 'ScaleUp',
     description:
-      'RESTful API service with JWT authentication, rate limiting, and comprehensive Swagger documentation.',
+      'A platform helping early-stage startups access tools, mentorship, and community — from idea validation through to product launch.',
     tags: ['Node.js', 'Express', 'MongoDB'],
-    github: '#',
+    github: 'https://github.com/Scaleup-Build/scaleup-website-frontend',
     live: '#',
+    image: scaleupImg,
   },
 ]
 
@@ -117,9 +123,11 @@ export default function Home() {
                 data-aos-delay={i * 100}
                 className="group flex flex-col p-6 rounded-xl border border-muted/30 hover:border-primary/40 bg-background hover:shadow-lg transition-all duration-300"
               >
-                {/* Image placeholder */}
-                <div className="w-full h-40 rounded-lg bg-muted/10 mb-5 flex items-center justify-center text-muted/30 group-hover:bg-primary/5 transition-colors">
-                  <ImagePlaceholder />
+                {/* Image */}
+                <div className="w-full aspect-video rounded-lg overflow-hidden bg-muted/10 mb-5 flex items-center justify-center text-muted/30 group-hover:bg-primary/5 transition-colors">
+                  {project.image
+                    ? <img src={project.image} alt={project.title} className="w-full h-full object-contain p-3" />
+                    : <ImagePlaceholder />}
                 </div>
 
                 {/* Tags */}
