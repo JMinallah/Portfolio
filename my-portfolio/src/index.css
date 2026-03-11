@@ -41,6 +41,8 @@
 	html {
 		color-scheme: light;
 		scroll-behavior: smooth;
+		font-family: 'Manrope', 'Syne', sans-serif;
+		font-size: 17px;
 	}
 	.dark html, .dark { color-scheme: dark; }
 

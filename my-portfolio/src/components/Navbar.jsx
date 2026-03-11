@@ -35,7 +35,7 @@ export default function Navbar() {
 
   return (
     <header className="bg-background">
-      <div className="max-w-6xl mx-auto pl-3 pr-8 py-3 flex items-center justify-between">
+      <div className="max-w-6xl mx-auto pl-4 md:pl-0 md:mx-3 pr-12 pt-4 flex items-center justify-between">
         {/* Logo */}
         <Link to="/" className="flex-shrink-0">
           <img
@@ -46,7 +46,7 @@ export default function Navbar() {
         </Link>
 
         {/* Right side controls */}
-        <div ref={menuRef} className="relative flex items-center gap-3">
+        <div ref={menuRef} className="relative flex items-center gap-5 md:gap-10">
           <ThemeToggle />
 
           {/* Hamburger button */}
@@ -56,8 +56,8 @@ export default function Navbar() {
             aria-expanded={isOpen}
             className="p-2 rounded-md text-text hover:bg-muted/10 transition-colors"
           >
-            <svg width="26" height="20" viewBox="0 0 26 20" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
-              <line x1="0" y1="5" x2="26" y2="5" />
+            <svg width="36" height="20" viewBox="0 0 26 20" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
+              <line x1="0" y1="5" x2="30" y2="5" />
               <line x1="0" y1="15" x2="18" y2="15" />
             </svg>
           </button>

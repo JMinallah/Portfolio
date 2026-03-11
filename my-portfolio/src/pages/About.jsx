@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import image from '../assets/image.png'
 
 const skills = [
   'JavaScript', 'TypeScript', 'React', 'Next.js',
@@ -32,47 +32,23 @@ const experiences = [
 ]
 
 export default function About() {
-  const [imgError, setImgError] = useState(false)
-
   return (
-    <div className="max-w-6xl mx-auto px-6 py-16">
-
-      {/* ─── Page header ─── */}
-      <div data-aos="fade-up" className="mb-16">
-        <p className="text-sm text-primary font-medium mb-2 uppercase tracking-widest">About</p>
-        <h1 className="text-4xl sm:text-5xl font-bold tracking-tight leading-tight">
-          Crafting experiences,<br className="hidden sm:block" /> one line at a time.
-        </h1>
-      </div>
-
+    <div className="max-w-6xl mx-auto px-6 py-10">
       {/* ─── Bio ─── */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 mb-20 items-start">
-        {/* Photo */}
-        <div data-aos="fade-right" className="relative mx-auto w-full max-w-sm lg:max-w-none">
-          <div className="w-full aspect-[4/5] rounded-2xl overflow-hidden bg-muted/10 border border-muted/20 flex items-center justify-center">
-            {!imgError ? (
-              <img
-                src="/meee.png"
-                alt="Jovia Minallah"
-                className="w-full h-full object-cover"
-                onError={() => setImgError(true)}
-              />
-            ) : (
-              <div className="flex flex-col items-center justify-center gap-3 text-muted/30 px-8 text-center">
-                <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1">
-                  <circle cx="12" cy="8" r="5" />
-                  <path d="M0 22v-1a12 12 0 0 1 24 0v1" />
-                </svg>
-                <span className="text-sm">Profile Photo</span>
-              </div>
-            )}
+      <div className="mb-20 overflow-hidden">
+        {/* Photo — floats left, text wraps around it at all sizes */}
+        <div data-aos="fade-right" className="float-left mr-6 mb-4 w-40 sm:w-64 lg:w-[42%]">
+          <div className="w-full aspect-[4/5] overflow-hidden rounded-xl">
+            <img
+              src={image}
+              alt="Jovia Minallah"
+              className="w-full h-full object-cover"
+            />
           </div>
-          {/* Decorative accent border */}
-          <div className="absolute -bottom-3 -right-3 w-1/2 h-1/2 rounded-2xl border-2 border-primary/20 -z-10 pointer-events-none" />
         </div>
 
-        {/* Bio text */}
-        <div data-aos="fade-left" data-aos-delay="100" className="flex flex-col justify-center">
+        {/* Bio text — wraps around the floated image */}
+        <div data-aos="fade-left" data-aos-delay="100">
           <h2 className="text-2xl font-bold mb-5">Hi, I&apos;m Jovia Minallah.</h2>
           <div className="space-y-4 text-muted leading-relaxed text-[0.9375rem]">
             <p>
