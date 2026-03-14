@@ -104,10 +104,10 @@ export default function Contact() {
                 <div className="w-10 h-10 rounded-lg border border-muted/30 flex items-center justify-center text-muted shrink-0">
                   {icon}
                 </div>
-                <div>
+                <div className="min-w-0">
                   <p className="text-xs text-muted uppercase tracking-widest mb-0.5">{label}</p>
                   {href ? (
-                    <a href={href} className="font-medium hover:text-primary transition-colors">
+                    <a href={href} className="font-medium hover:text-primary transition-colors break-all">
                       {value}
                     </a>
                   ) : (
@@ -128,12 +128,12 @@ export default function Contact() {
                   href={href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-3 text-muted hover:text-primary transition-colors group"
+                  className="flex items-center gap-3 text-muted hover:text-primary transition-colors group min-w-0"
                 >
                   <span className="opacity-70 group-hover:opacity-100 transition-opacity">
                     {icon}
                   </span>
-                  <span className="text-sm">
+                  <span className="text-sm min-w-0 break-words">
                     <span className="font-medium text-text group-hover:text-primary">{label}</span>
                     <span className="ml-2 text-muted/70">{handle}</span>
                   </span>

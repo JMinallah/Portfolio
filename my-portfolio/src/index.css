@@ -33,6 +33,7 @@
 		scroll-behavior: smooth;
 		font-family: 'Manrope', system-ui, -apple-system, 'Segoe UI', sans-serif;
 		font-size: 17px;
+		overflow-x: hidden;
 	}
 
 	h1,
@@ -45,23 +46,25 @@
 	}
 
 	body {
-		background-color: var(--color-bg);
-		background-image: url('./assets/brown.jpg');
-		background-repeat: no-repeat;
-		background-size: cover;
-		background-attachment: fixed;
-		background-position: center center;
+		background-color: transparent;
 		color: var(--color-text);
 		-webkit-font-smoothing: antialiased;
 		-moz-osx-font-smoothing: grayscale;
 		overflow-x: hidden;
+		position: relative;
+		isolation: isolate;
 	}
-}
 
-/* Mobile-specific background adjustments */
-@media (max-width: 768px) {
-	body {
-		background-attachment: scroll;
+	body::before {
+		content: '';
+		position: fixed;
+		inset: 0;
+		z-index: -1;
+		background-color: var(--color-bg);
+		background-image: url('./assets/brown.jpg');
+		background-repeat: no-repeat;
+		background-size: cover;
+		background-position: center center;
 	}
 }
 

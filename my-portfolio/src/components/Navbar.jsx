@@ -17,7 +17,7 @@ export default function Navbar() {
 
   return (
     <header className="fixed top-0 inset-x-0 z-50 bg-background/80 backdrop-blur-sm">
-      <div className="max-w-6xl mx-auto pl-4 md:pl-0 md:mx-3 pr-12 pt-4 flex items-center justify-between">
+      <div className="max-w-6xl mx-auto pl-4 md:pl-0 md:mx-3 pr-4 sm:pr-6 md:pr-12 pt-4 flex items-center justify-between">
         {/* Logo */}
         <Link to="/" className="flex-shrink-0">
           <img src={logo} alt="Logo" className="h-8 sm:h-10 md:h-14 lg:h-16 w-auto" />
@@ -39,7 +39,7 @@ export default function Navbar() {
         </nav>
 
         {/* Mobile nav: icons only with hover tooltip */}
-        <nav className="flex md:hidden items-center gap-4">
+        <nav className="flex md:hidden items-center gap-2 sm:gap-3">
           {navLinks.map(({ label, path, Icon }) => (
             <Link
               key={path}
