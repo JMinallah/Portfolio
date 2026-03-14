@@ -2,6 +2,7 @@ import { useState } from 'react'
 import rydrImg from '../assets/rydr-logo.png'
 import portfolioImg from '../assets/logo.png'
 import scaleupImg from '../assets/logo(1).png'
+import moduImg from '../assets/modu.png'
 
 const allProjects = [
   {
@@ -32,28 +33,13 @@ const allProjects = [
     image: scaleupImg,
   },
   {
-    title: 'Project Delta',
-    description: 'Admin dashboard with interactive data visualizations, role-based access control, and audit logs.',
+    title: 'Modu',
+    description: 'Mobile app for developing android applications only using your mobile app.',
     tags: ['React', 'TypeScript', 'Chart.js'],
-    category: 'fullstack',
-    github: '#',
-    live: '#',
-  },
-  {
-    title: 'Project Epsilon',
-    description: 'Mobile-first portfolio template featuring dark mode, smooth transitions, and accessibility best practices.',
-    tags: ['React', 'Tailwind CSS'],
     category: 'frontend',
-    github: '#',
-    live: '#',
-  },
-  {
-    title: 'Project Zeta',
-    description: 'Microservices architecture with Docker Compose, a message queue, API gateway, and automated CI/CD.',
-    tags: ['Docker', 'Node.js', 'Redis'],
-    category: 'backend',
-    github: '#',
-    live: '#',
+    github: 'https://github.com/andamagodwin/Modu-main-landing-page',
+    live: 'https://getmodu.cloud/',
+    image: moduImg,
   },
 ]
 
@@ -85,11 +71,10 @@ export default function Projects() {
 
       {/* ─── Page header ─── */}
       <div data-aos="fade-up" className="mb-12">
-        <p className="text-sm text-primary font-medium mb-2 uppercase tracking-widest">Portfolio</p>
         <h1 className="text-4xl sm:text-5xl font-bold tracking-tight mb-4">Projects</h1>
         <p className="text-muted max-w-xl leading-relaxed">
-          A curated collection of things I&apos;ve built — from solo side projects to
-          collaborative shipped products.
+          A curated collection of things I&apos;ve built, from <em className="text-primary font-bold">solo</em> side projects to
+          <em className="text-primary font-bold"> collaborative</em> shipped products.
         </p>
       </div>
 
