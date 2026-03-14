@@ -28,9 +28,12 @@ export default function About() {
   return (
     <div className="max-w-6xl mx-auto px-6 py-10">
       {/* ─── Bio ─── */}
-      <div className="mb-20 overflow-hidden bg-background backdrop-blur-sm p-6 rounded-lg">
-        {/* Photo — floats left, text wraps around it at all sizes */}
-        <div data-aos="fade-right" className="float-left mr-6 mb-4 w-40 sm:w-64 lg:w-[42%]">
+      <div className="mb-20 overflow-hidden bg-background p-4 sm:p-6 rounded-lg">
+        {/* Photo — stacked on mobile, wrapped on larger screens */}
+        <div
+          data-aos="fade-right"
+          className="float-none mx-auto mb-5 w-full max-w-[260px] md:float-left md:mx-0 md:mr-6 md:mb-4 md:w-64 lg:w-[42%]"
+        >
           <div className="w-full aspect-[4/5] overflow-hidden rounded-xl">
             <img
               src={image}

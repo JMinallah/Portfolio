@@ -75,7 +75,7 @@ export default function Home() {
               <br />
               <span className="text-text/80">Minallah Matata.</span>
             </h1>
-            <div className="bg-background/5 backdrop-blur-sm p-6 rounded-lg">
+            <div className="bg-background/5 p-6 rounded-lg">
               {/* Sub-headline */}
               <p data-aos="fade-up" data-aos-delay="100" style={{ fontFamily: "'Syne', sans-serif" }} className="text-base sm:text-lg lg:text-xl text-muted p-4 rounded-lg max-w-xl mx-auto mb-10 leading-relaxed font-medium">
                 FullStack Developer crafting clean, performant web experiences. I turn
