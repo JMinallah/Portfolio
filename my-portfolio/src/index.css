@@ -16,7 +16,7 @@
 	--color-secondary-rgb: 217 4 41;
 	--color-text: #2b2d42; /* dark blue-gray text */
 	--color-text-rgb: 43 45 66;
-	--color-muted: #8d99ae; /* blue-gray muted */
+	--color-muted: #1a5c5c; /* blue-gray muted */
 	--color-muted-rgb: 141 153 174;
 }
 
@@ -31,7 +31,7 @@
 		color-scheme: light;
 		scroll-behavior: smooth;
 		font-family: 'Manrope', system-ui, -apple-system, 'Segoe UI', sans-serif;
-		font-size: 17px;
+		font-size: 18px;
 		overflow-x: hidden;
 	}
 
