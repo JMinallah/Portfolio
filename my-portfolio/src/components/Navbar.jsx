@@ -20,7 +20,7 @@ export default function Navbar() {
       <div className="max-w-6xl mx-auto pl-4 md:pl-0 md:mx-3 pr-12 pt-4 flex items-center justify-between">
         {/* Logo */}
         <Link to="/" className="flex-shrink-0">
-          <img src={logo} alt="Logo" className="h-10 sm:h-12 md:h-16 w-auto" />
+          <img src={logo} alt="Logo" className="h-8 sm:h-10 md:h-14 lg:h-16 w-auto" />
         </Link>
 
         {/* Desktop nav: horizontal links */}
