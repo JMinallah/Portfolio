@@ -2,10 +2,10 @@ import Navbar from '../components/Navbar'
 
 export default function MainLayout({ children }) {
   return (
-    <div className="min-h-screen bg-background text-text flex flex-col">
+    <div className="min-h-screen text-text flex flex-col">
       <Navbar />
 
-      <main className="flex-1">
+      <main className="flex-1 pt-24 md:pt-28">
         {children}
       </main>
 
