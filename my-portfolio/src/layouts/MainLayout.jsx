@@ -16,7 +16,7 @@ export default function MainLayout({ children }) {
           </div>
           <div className="flex items-center gap-5">
             <a
-              href="https://github.com"
+              href="https://github.com/JMinallah"
               target="_blank"
               rel="noopener noreferrer"
               className="text-sm text-muted hover:text-primary transition-colors"
@@ -24,7 +24,7 @@ export default function MainLayout({ children }) {
               GitHub
             </a>
             <a
-              href="https://linkedin.com"
+              href="https://www.linkedin.com/in/jovia-minallah-matata-18b499356"
               target="_blank"
               rel="noopener noreferrer"
               className="text-sm text-muted hover:text-primary transition-colors"
