@@ -58,6 +58,13 @@
 	}
 }
 
+/* Mobile-specific background adjustments */
+@media (max-width: 768px) {
+	body {
+		background-attachment: scroll;
+	}
+}
+
 /* Custom scrollbar */
 ::-webkit-scrollbar {
 	width: 6px;
