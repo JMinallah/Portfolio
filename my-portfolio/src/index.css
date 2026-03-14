@@ -1,11 +1,12 @@
 /*
-	Color tokens (light + dark) defined as CSS variables.
-	Use the `.dark` class on a top-level element (usually <html>) to switch to dark mode.
+    Color tokens (light-only) defined as CSS variables.
 
-	The RGB variables are provided for any places where you want to use an alpha value
-	with `rgb()`/`rgba()` or `color()` functions.
-	
-	Palette: #2b2d42 (dark blue-gray), #8d99ae (blue-gray), #edf2f4 (light gray), #ef233c (red), #d90429 (dark red)
+    Dark mode removed from this project; the site uses a single light theme.
+
+    The RGB variables are provided for any places where you want to use an alpha value
+    with `rgb()`/`rgba()` or `color()` functions.
+    
+    Palette: #2b2d42 (dark blue-gray), #8d99ae (blue-gray), #edf2f4 (light gray), #ef233c (red), #d90429 (dark red)
 */
 :root {
 	--color-bg: #edf2f4; /* light gray background */
@@ -19,18 +20,7 @@
 	--color-muted-rgb: 141 153 174;
 }
 
-/* Dark mode tokens */
-.dark {
-	--color-bg: #2b2d42; /* dark blue-gray background */
-	--color-primary: #ef233c; /* red accent */
-	--color-primary-rgb: 239 35 60;
-	--color-secondary: #d90429; /* dark red accent */
-	--color-secondary-rgb: 217 4 41;
-	--color-text: #edf2f4; /* light gray text */
-	--color-text-rgb: 237 242 244;
-	--color-muted: #8d99ae; /* blue-gray muted */
-	--color-muted-rgb: 141 153 174;
-}
+/* Dark mode removed — project uses a single light theme */
 
 @tailwind base;
 @tailwind components;
@@ -44,7 +34,6 @@
 		font-family: 'Manrope', system-ui, -apple-system, 'Segoe UI', sans-serif;
 		font-size: 17px;
 	}
-	.dark html, .dark { color-scheme: dark; }
 
 	h1,
 	h2,

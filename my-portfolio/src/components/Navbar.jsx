@@ -1,6 +1,5 @@
 import { useState, useEffect, useRef } from 'react'
 import { Link, useLocation } from 'react-router-dom'
-import ThemeToggle from './ThemeToggle'
 import logo from '../assets/logo.png'
 
 const navLinks = [
@@ -47,8 +46,6 @@ export default function Navbar() {
 
         {/* Right side controls */}
         <div ref={menuRef} className="relative flex items-center gap-5 md:gap-10">
-          <ThemeToggle />
-
           {/* Hamburger button */}
           <button
             onClick={() => setIsOpen((p) => !p)}
