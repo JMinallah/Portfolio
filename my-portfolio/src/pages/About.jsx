@@ -73,7 +73,7 @@ export default function About() {
               Download Resume
             </a>
             <a
-              href="mailto:you@example.com"
+              href="mailto:joviaminallah@gmail.com"
               className="px-5 py-2.5 border border-muted/50 font-medium rounded-md hover:border-primary hover:text-primary transition-all text-sm"
             >
               Say Hello
