@@ -81,10 +81,12 @@ export default function Contact() {
       {/* ─── Page header ─── */}
       <div data-aos="fade-up" className="mb-16">
         <h1 className="text-4xl sm:text-5xl font-bold tracking-tight mb-4">Let&apos;s talk.</h1>
-        <p className="text-muted max-w-lg leading-relaxed">
-          Have a project in mind, want to collaborate, or just want to say hi?
-          My inbox is always open.
-        </p>
+        <div className="splash-panel max-w-lg">
+          <p className="text-muted leading-relaxed">
+            Have a project in mind, want to collaborate, or just want to say hi?
+            My inbox is always open.
+          </p>
+        </div>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">

@@ -20,7 +20,6 @@
 	--color-muted-rgb: 141 153 174;
 }
 
-/* Dark mode removed — project uses a single light theme */
 
 @tailwind base;
 @tailwind components;
@@ -65,6 +64,39 @@
 		background-repeat: no-repeat;
 		background-size: cover;
 		background-position: center center;
+	}
+}
+
+@layer components {
+	.splash-panel {
+		position: relative;
+		display: inline-block;
+		max-width: min(100%, 42rem);
+		padding: clamp(0.9rem, 2vw, 1.1rem) clamp(1rem, 3vw, 1.5rem);
+		isolation: isolate;
+	}
+
+	.splash-panel::before {
+		content: '';
+		position: absolute;
+		inset: -0.2rem -0.35rem -0.3rem -0.45rem;
+		z-index: -1;
+		background: rgba(247, 239, 231, 0.9);
+		border: 1px solid rgba(43, 45, 66, 0.08);
+		clip-path: polygon(2% 13%, 11% 5%, 28% 2%, 41% 7%, 57% 1%, 71% 6%, 87% 4%, 97% 13%, 100% 29%, 96% 46%, 100% 61%, 95% 80%, 86% 94%, 68% 98%, 51% 94%, 37% 99%, 21% 95%, 8% 88%, 2% 71%, 5% 52%, 0% 33%);
+		transform: rotate(-1.8deg);
+		box-shadow: 0 14px 30px rgba(43, 45, 66, 0.08);
+	}
+
+	.splash-panel::after {
+		content: '';
+		position: absolute;
+		inset: 0.25rem 0.2rem -0.2rem 0.35rem;
+		z-index: -2;
+		background: rgba(239, 35, 60, 0.08);
+		clip-path: polygon(4% 21%, 18% 9%, 35% 13%, 48% 4%, 66% 10%, 79% 6%, 94% 18%, 97% 37%, 93% 58%, 98% 74%, 88% 91%, 70% 96%, 54% 91%, 38% 97%, 19% 89%, 6% 75%, 2% 57%, 7% 39%);
+		transform: rotate(2.4deg);
+		filter: blur(0.5px);
 	}
 }
 

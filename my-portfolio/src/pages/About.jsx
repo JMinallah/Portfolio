@@ -28,7 +28,7 @@ export default function About() {
   return (
     <div className="max-w-6xl mx-auto px-6 py-10">
       {/* ─── Bio ─── */}
-      <div className="mb-20 overflow-hidden">
+      <div className="mb-20 overflow-hidden bg-background backdrop-blur-sm p-6 rounded-lg">
         {/* Photo — floats left, text wraps around it at all sizes */}
         <div data-aos="fade-right" className="float-left mr-6 mb-4 w-40 sm:w-64 lg:w-[42%]">
           <div className="w-full aspect-[4/5] overflow-hidden rounded-xl">

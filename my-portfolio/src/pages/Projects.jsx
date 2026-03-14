@@ -72,10 +72,12 @@ export default function Projects() {
       {/* ─── Page header ─── */}
       <div data-aos="fade-up" className="mb-12">
         <h1 className="text-4xl sm:text-5xl font-bold tracking-tight mb-4">Projects</h1>
-        <p className="text-muted max-w-xl leading-relaxed">
-          A curated collection of things I&apos;ve built, from <em className="text-primary font-bold">solo</em> side projects to
-          <em className="text-primary font-bold"> collaborative</em> shipped products.
-        </p>
+        <div className="splash-panel max-w-lg">
+          <p className="text-muted max-w-xl leading-relaxed">
+            A curated collection of things I&apos;ve built, from <em className="text-primary font-bold">solo</em> side projects to
+            <em className="text-primary font-bold"> collaborative</em> shipped products.
+          </p>
+        </div>
       </div>
 
       {/* ─── Filter tabs ─── */}
