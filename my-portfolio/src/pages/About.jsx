@@ -1,33 +1,26 @@
 import image from '../assets/image.png'
 
 const skills = [
-  'JavaScript', 'TypeScript', 'React', 'Next.js',
-  'Node.js', 'Express', 'PostgreSQL', 'MongoDB',
-  'Tailwind CSS', 'REST APIs', 'Git & GitHub', 'Docker',
-  'Figma', 'Linux', 'CI/CD', 'GraphQL',
+  'HTML', 'CSS','JavaScript', 'TypeScript','Java', 'Kotlin', 'React',
+  'Node.js', 'MySQL',
+  'Tailwind CSS', 'REST APIs', 'Git & GitHub',
+  'Figma', 'Linux', 'CI/CD',
 ]
 
 const experiences = [
   {
-    role: 'FullStack Developer',
-    company: 'Company Name',
-    period: '2023 — Present',
-    description:
-      'Building scalable web applications and REST APIs. Working across the entire stack — from database design to responsive UI implementation and deployment pipelines.',
-  },
-  {
     role: 'Frontend Developer',
-    company: 'Previous Company',
-    period: '2022 — 2023',
+    company: 'ScaleUp',
+    period: '2026 — Present',
     description:
-      'Developed accessible, responsive web interfaces in close collaboration with design teams to deliver pixel-perfect, high-performance implementations.',
+      'Developed accessible, responsive web interfaces in close collaboration with design teams to deliver pixel-perfect, high performance implementations.',
   },
   {
-    role: 'Junior Developer',
-    company: 'First Company',
-    period: '2021 — 2022',
+    role: 'Full Stack Developer',
+    company: 'Modu',
+    period: '2026 — Present',
     description:
-      'Started my professional career building internal tooling and client-facing web applications, picking up fundamentals across the stack.',
+      'Co-Founder of Modu, leading the development of an innovative mobile app.',
   },
 ]
 
@@ -52,19 +45,20 @@ export default function About() {
           <h2 className="text-2xl font-bold mb-5">Hi, I&apos;m Jovia Minallah.</h2>
           <div className="space-y-4 text-muted leading-relaxed text-[0.9375rem]">
             <p>
-              I&apos;m a FullStack Developer based in [Your City], passionate about building
+              I&apos;m a FullStack Developer based in Kampala, Uganda, passionate about building
               performant, accessible, and beautiful web applications that solve real problems
               for real people.
             </p>
             <p>
               With experience across the full stack, I love working with modern JavaScript
-              frameworks on the frontend and building robust, well-documented APIs on the
+              frameworks on the frontend and building robust, well documented APIs on the
               backend. I care deeply about code quality, developer experience, and shipping
               products that people actually enjoy using.
             </p>
             <p>
-              When I&apos;m not coding, you&apos;ll find me [exploring design trends / contributing
-              to open source / enjoying a good read — fill in your hobbies here].
+              Outside of development, I enjoy exploring design trends, reading productivity books,
+              and sharpening my communication skills. And when it&apos;s time to recharge, you&apos;ll
+              likely find me laughing off on anything with humor, watching anime and pretending it&apos;s purely for narrative research.
             </p>
           </div>
 
