@@ -152,6 +152,8 @@ export default function Home() {
                 <div className="flex items-center gap-5 text-sm mt-auto">
                   <a
                     href={project.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="flex items-center gap-1.5 text-muted hover:text-primary transition-colors"
                   >
                     <GithubIcon />
@@ -159,6 +161,8 @@ export default function Home() {
                   </a>
                   <a
                     href={project.live}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="flex items-center gap-1.5 text-muted hover:text-primary transition-colors"
                   >
                     <ExternalLinkIcon />

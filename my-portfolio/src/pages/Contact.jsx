@@ -3,8 +3,8 @@ import { useState } from 'react'
 const contactInfo = [
   {
     label: 'Email',
-    value: 'you@example.com',
-    href: 'mailto:you@example.com',
+    value: 'joviaminallah@gmail.com',
+    href: 'mailto:joviaminallah@gmail.com',
     icon: (
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
         <rect x="2" y="4" width="20" height="16" rx="2" />
@@ -14,7 +14,7 @@ const contactInfo = [
   },
   {
     label: 'Location',
-    value: '[Your City, Country]',
+    value: 'Kampala, Uganda',
     href: null,
     icon: (
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -28,7 +28,7 @@ const contactInfo = [
 const socials = [
   {
     label: 'GitHub',
-    handle: '@jminallah',
+    handle: 'JMinallah',
     href: 'https://github.com',
     icon: (
       <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
@@ -38,7 +38,7 @@ const socials = [
   },
   {
     label: 'LinkedIn',
-    handle: 'Jovia Minallah',
+    handle: 'Jovia Minallah Matata',
     href: 'https://linkedin.com',
     icon: (
       <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
@@ -48,7 +48,7 @@ const socials = [
   },
   {
     label: 'Twitter / X',
-    handle: '@jminallah',
+    handle: '@JoviaMinallah',
     href: 'https://twitter.com',
     icon: (
       <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
@@ -80,7 +80,6 @@ export default function Contact() {
 
       {/* ─── Page header ─── */}
       <div data-aos="fade-up" className="mb-16">
-        <p className="text-sm text-primary font-medium mb-2 uppercase tracking-widest">Contact</p>
         <h1 className="text-4xl sm:text-5xl font-bold tracking-tight mb-4">Let&apos;s talk.</h1>
         <p className="text-muted max-w-lg leading-relaxed">
           Have a project in mind, want to collaborate, or just want to say hi?
