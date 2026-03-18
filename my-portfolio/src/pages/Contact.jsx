@@ -64,15 +64,55 @@ const inputBase =
 export default function Contact() {
   const [form, setForm] = useState({ name: '', email: '', subject: '', message: '' })
   const [submitted, setSubmitted] = useState(false)
+  const [sending, setSending] = useState(false)
 
   function handleChange(e) {
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }))
   }
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault()
-    // TODO: wire up to an email service (Formspree, EmailJS, etc.)
-    setSubmitted(true)
+    // basic client-side validation
+    if (!form.name || !form.email || !form.message) {
+      alert('Please complete name, email, and message.')
+      return
+    }
+
+    const endpoint = import.meta.env.VITE_FORM_ENDPOINT
+    if (!endpoint) {
+      // No endpoint configured — fallback to success for local/dev, but warn
+      console.warn('No form endpoint configured. Set VITE_FORM_ENDPOINT in .env to a provider endpoint (Formspree, Getform, etc.).')
+      setSubmitted(true)
+      return
+    }
+
+    setSending(true)
+    try {
+      // Use FormData so providers like Formspree accept the submission (avoid JSON/CORS issues)
+      const data = new FormData()
+      Object.entries(form).forEach(([k, v]) => data.append(k, v))
+
+      const res = await fetch(endpoint, {
+        method: 'POST',
+        headers: {
+          Accept: 'application/json',
+        },
+        body: data,
+      })
+
+      if (res.ok) {
+        setSubmitted(true)
+      } else {
+        const err = await res.text()
+        console.error('Form submit error:', err)
+        alert('Failed to send message. Please try again later.')
+      }
+    } catch (err) {
+      console.error(err)
+      alert('Failed to send message. Please check your connection.')
+    } finally {
+      setSending(false)
+    }
   }
 
   return (
@@ -233,8 +273,9 @@ export default function Contact() {
             <button
               type="submit"
               className="w-full sm:w-auto px-8 py-3 bg-primary text-white font-medium rounded-md hover:bg-secondary transition-colors duration-200 text-sm"
+              disabled={sending}
             >
-              Send Message
+              {sending ? 'Sending…' : 'Send Message'}
             </button>
           </form>
         )}

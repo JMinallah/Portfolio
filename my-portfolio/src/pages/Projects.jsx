@@ -7,8 +7,8 @@ import moduImg from '../assets/modu.png'
 const allProjects = [
   {
     title: 'Rydr',
-    description: "RYDR is a decentralized ride-sharing application that leverages the power of Polkadot's ecosystem through Moonbase Alpha, an Ethereum-compatible parachain. By combining blockchain technology with real-world transportation needs, RYDR enables trustless, transparent, and secure peer-to-peer ride-sharing with built-in escrow payments.",
-    tags: ['React', 'Node.js', 'Appwrite','Polkadot', 'Moonbase Alpha'],
+    description: "RYDR is a decentralized ride-sharing app built on Polkadot's Moonbase Alpha parachain, enabling trustless peer-to-peer rides with built-in escrow payments.",
+    tags: ['React', 'Node.js', 'Appwrite', 'Polkadot'],
     category: 'frontend',
     github: 'https://github.com/andamagodwin/rydr-frontend',
     live: 'https://rydr-gamma.vercel.app',
@@ -16,7 +16,7 @@ const allProjects = [
   },
   {
     title: 'My Portfolio',
-    description: 'A personal portfolio built with React, Vite, and Tailwind CSS — showcasing my projects, skills, and experience with smooth AOS animations, dark mode support, and a clean responsive design.',
+    description: 'A personal portfolio built with React, Vite, and Tailwind CSS, showcasing my projects, skills, and experience with smooth AOS animations, dark mode support, and a clean responsive design.',
     tags: ['React', 'Tailwind CSS', 'Vite'],
     category: 'fullstack',
     github: 'https://github.com/JMinallah/Portfolio',
@@ -25,8 +25,8 @@ const allProjects = [
   },
   {
     title: 'ScaleUp',
-    description: 'ScaleUp is a platform built to help early-stage startups and entrepreneurs access the tools, mentorship, and community they need to grow — from idea validation through to product launch.',
-    tags: ['Node.js', 'Express', 'MongoDB'],
+    description: 'ScaleUp is a platform built to help early stage startups and entrepreneurs access the tools, mentorship, and community they need to grow, from idea validation through to product launch.',
+    tags: ['React', 'Tailwind CSS', 'Vite', 'JavaScript'],
     category: 'frontend',
     github: 'https://github.com/Scaleup-Build/scaleup-website-frontend',
     live: 'https://scaleupbuild.org',
@@ -35,7 +35,7 @@ const allProjects = [
   {
     title: 'Modu',
     description: 'Mobile app for developing android applications only using your mobile app.',
-    tags: ['React', 'TypeScript', 'Chart.js'],
+    tags: ['React', 'Tailwind CSS', 'Vite'],
     category: 'frontend',
     github: 'https://github.com/andamagodwin/Modu-main-landing-page',
     live: 'https://getmodu.cloud',

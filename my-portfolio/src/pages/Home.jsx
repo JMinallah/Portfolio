@@ -44,19 +44,19 @@ const featuredProjects = [
   {
     title: 'My Portfolio',
     description:
-      'Personal portfolio built with React, Vite, and Tailwind CSS — featuring smooth AOS animations, dark mode support, and a clean responsive design.',
+      'A personal portfolio built with React, Vite, and Tailwind CSS, showcasing my projects, skills, and experience with smooth AOS animations, dark mode support, and a clean responsive design.',
     tags: ['React', 'Tailwind CSS', 'Vite'],
     github: 'https://github.com/JMinallah/Portfolio',
-    live: 'https://portfolio-rho-seven-69.vercel.app/',
+    live: 'https://jminallah.is-a.dev',
     image: portfolioImg,
   },
   {
     title: 'ScaleUp',
     description:
-      'A platform helping early-stage startups access tools, mentorship, and community — from idea validation through to product launch.',
-    tags: ['Node.js', 'Express', 'MongoDB'],
+      'A platform helping early stage startups access tools, mentorship, and community, from idea validation through to product launch.',
+    tags: ['React', 'Tailwind CSS', 'Vite', 'JavaScript'],
     github: 'https://github.com/Scaleup-Build/scaleup-website-frontend',
-    live: '#',
+    live: 'https://scaleupbuild.org',
     image: scaleupImg,
   },
 ]
