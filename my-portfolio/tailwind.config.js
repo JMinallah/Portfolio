@@ -4,8 +4,7 @@ export default {
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
-  // Dark mode disabled for this project
-  darkMode: false,
+  // Dark mode configuration removed (defaults apply)
   theme: {
     extend: {
       colors: {

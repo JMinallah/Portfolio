@@ -20,7 +20,7 @@ const allProjects = [
     tags: ['React', 'Tailwind CSS', 'Vite'],
     category: 'fullstack',
     github: 'https://github.com/JMinallah/Portfolio',
-    live: 'https://portfolio-rho-seven-69.vercel.app/',
+    live: 'https://jminallah.is-a.dev',
     image: portfolioImg,
   },
   {
@@ -29,7 +29,7 @@ const allProjects = [
     tags: ['Node.js', 'Express', 'MongoDB'],
     category: 'frontend',
     github: 'https://github.com/Scaleup-Build/scaleup-website-frontend',
-    live: '#',
+    live: 'https://scaleupbuild.org',
     image: scaleupImg,
   },
   {
@@ -38,7 +38,7 @@ const allProjects = [
     tags: ['React', 'TypeScript', 'Chart.js'],
     category: 'frontend',
     github: 'https://github.com/andamagodwin/Modu-main-landing-page',
-    live: 'https://getmodu.cloud/',
+    live: 'https://getmodu.cloud',
     image: moduImg,
   },
 ]
