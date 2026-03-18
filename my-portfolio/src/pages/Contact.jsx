@@ -65,16 +65,18 @@ export default function Contact() {
   const [form, setForm] = useState({ name: '', email: '', subject: '', message: '' })
   const [submitted, setSubmitted] = useState(false)
   const [sending, setSending] = useState(false)
+  const [error, setError] = useState('')
 
   function handleChange(e) {
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }))
+    if (error) setError('')
   }
 
   async function handleSubmit(e) {
     e.preventDefault()
     // basic client-side validation
     if (!form.name || !form.email || !form.message) {
-      alert('Please complete name, email, and message.')
+      setError('Please complete name, email, and message.')
       return
     }
 
@@ -83,6 +85,8 @@ export default function Contact() {
       // No endpoint configured — fallback to success for local/dev, but warn
       console.warn('No form endpoint configured. Set VITE_FORM_ENDPOINT in .env to a provider endpoint (Formspree, Getform, etc.).')
       setSubmitted(true)
+      setForm({ name: '', email: '', subject: '', message: '' })
+      setError('')
       return
     }
 
@@ -102,14 +106,25 @@ export default function Contact() {
 
       if (res.ok) {
         setSubmitted(true)
+        setForm({ name: '', email: '', subject: '', message: '' })
+        setError('')
       } else {
-        const err = await res.text()
-        console.error('Form submit error:', err)
-        alert('Failed to send message. Please try again later.')
+        let text
+        try {
+          const json = await res.json()
+          text = json.error || json.message || JSON.stringify(json)
+        } catch {
+          text = await res.text()
+        }
+        console.error('Form submit error:', text)
+        setError('Failed to send message: ' + (text || 'server error'))
+        // auto-clear after a short delay so the UI doesn't permanently show an error
+        setTimeout(() => setError(''), 8000)
       }
     } catch (err) {
       console.error(err)
-      alert('Failed to send message. Please check your connection.')
+      setError('Failed to send message. Please check your connection.')
+      setTimeout(() => setError(''), 8000)
     } finally {
       setSending(false)
     }
@@ -277,6 +292,11 @@ export default function Contact() {
             >
               {sending ? 'Sending…' : 'Send Message'}
             </button>
+            {error && (
+              <div role="alert" className="mt-3 rounded-md border border-red-200 bg-red-50 px-4 py-2 text-sm text-red-700">
+                {error}
+              </div>
+            )}
           </form>
         )}
       </div>
