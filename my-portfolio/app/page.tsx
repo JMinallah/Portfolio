@@ -1,6 +1,8 @@
 
 
 import type { Metadata } from "next";
+import FooterMinimal from "@/components/FooterMinimal";
+import NavMinimal from "@/components/NavMinimal";
 import { absoluteUrl, siteConfig } from "@/lib/site-config";
 
 export const metadata: Metadata = {
@@ -37,6 +39,15 @@ const personJsonLd = {
 export default function Home() {
   return (
     <div>
+      <NavMinimal
+        brand={siteConfig.name}
+        items={[
+          { href: "#projects", label: "Projects" },
+          { href: "#about", label: "About" },
+          { href: "#writing", label: "Writing" },
+          { href: "#contact", label: "Contact" },
+        ]}
+      />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
@@ -46,22 +57,23 @@ export default function Home() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
       />
       <main>
-        <section className="panel panel1">
+        <section id="projects" className="panel panel1">
           <h1>Section 1</h1>
         </section>
 
-        <section className="panel panel2">
+        <section id="about" className="panel panel2">
           <h1>Section 2</h1>
         </section>
 
-        <section className="panel panel3">
+        <section id="writing" className="panel panel3">
           <h1>Section 3</h1>
         </section>
 
-        <section className="panel panel4">
+        <section id="contact" className="panel panel4">
           <h1>Section 4</h1>
         </section>
       </main>
+      <FooterMinimal name={siteConfig.name} email="hello@example.com" />
     </div>
   );
 }
