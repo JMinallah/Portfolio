@@ -2,7 +2,7 @@ import { featuredProjects } from "@/lib/portfolio-data";
 
 export function FeaturedProjects() {
   return (
-    <section id="projects" className="mt-16">
+    <section className="mx-auto flex h-full w-full max-w-6xl flex-col justify-start px-4 pt-28 sm:px-6 lg:px-8">
       <div className="mb-6 flex items-end justify-between gap-4">
         <h2 className="text-2xl font-semibold tracking-tight text-zinc-900 md:text-3xl">
           Featured Projects

@@ -2,14 +2,14 @@ import { skillGroups } from "@/lib/portfolio-data";
 
 export function About() {
   return (
-    <section id="about" className="mt-16">
+    <section className="mx-auto flex h-full w-full max-w-6xl flex-col justify-start px-4 pt-28 sm:px-6 lg:px-8">
       <div className="mb-6 flex items-end justify-between gap-4">
         <h2 className="text-2xl font-semibold tracking-tight text-zinc-900 md:text-3xl">
           About
         </h2>
       </div>
 
-      <div className="grid gap-8 rounded-3xl border border-zinc-200 bg-white p-6 shadow-sm md:grid-cols-[1.1fr_1.4fr] md:p-10">
+      <div className="grid gap-8 md:grid-cols-[1.1fr_1.4fr]">
         <div>
           {/* TODO: replace with your real bio */}
           <p className="text-base leading-relaxed text-zinc-600">

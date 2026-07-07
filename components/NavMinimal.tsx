@@ -27,7 +27,7 @@ export default function NavMinimal({
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <header className="sticky top-4 z-50 sm:top-5">
+    <header className="sticky top-4 z-[100] sm:top-5">
       <div className="mx-auto flex max-w-7xl justify-center px-4 sm:px-6 lg:px-8">
         <nav
           className="relative flex w-full max-w-4xl items-center justify-between rounded-full border border-black/10 bg-white/80 px-6 py-4 shadow-lg shadow-black/5 backdrop-blur-xl sm:px-8"

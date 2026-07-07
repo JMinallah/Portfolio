@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import FooterMinimal from "@/components/FooterMinimal";
 import NavMinimal from "@/components/NavMinimal";
+import { StackSection } from "@/components/StackSection";
 import { Hero } from "@/components/Hero";
 import { Capabilities } from "@/components/Capabilities";
 import { FeaturedProjects } from "@/components/FeaturedProjects";
 import { About } from "@/components/About";
+import { Writing } from "@/components/Writing";
 import { Contact } from "@/components/Contact";
 import { absoluteUrl, siteConfig } from "@/lib/site-config";
 import { getAllPosts } from "@/lib/blog";
@@ -64,44 +65,25 @@ export default async function Home() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
       />
-      <main className="mx-auto w-full max-w-6xl px-4 pt-28 pb-16 sm:px-6 lg:px-8">
-        <Hero />
-        <FeaturedProjects />
-        <Capabilities />
-        <About />
-
-        <section className="mt-16">
-          <div className="mb-6 flex items-end justify-between gap-4">
-            <h2 className="text-2xl font-semibold tracking-tight text-zinc-900 md:text-3xl">
-              Writing
-            </h2>
-            <Link
-              className="text-sm font-medium text-zinc-600 hover:text-zinc-900"
-              href="/blog"
-            >
-              See all
-            </Link>
-          </div>
-
-          <div className="grid gap-5 md:grid-cols-2">
-            {posts.map((post) => (
-              <Link
-                key={post.slug}
-                href={`/blog/${post.slug}`}
-                className="rounded-2xl border border-zinc-200 bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md"
-              >
-                <h3 className="text-lg font-semibold text-zinc-900">
-                  {post.metadata.title}
-                </h3>
-                <p className="mt-3 text-sm leading-relaxed text-zinc-600">
-                  {post.metadata.summary}
-                </p>
-              </Link>
-            ))}
-          </div>
-        </section>
-
-        <Contact />
+      <main>
+        <StackSection zIndex={10} className="bg-white">
+          <Hero />
+        </StackSection>
+        <StackSection zIndex={20} id="projects" className="bg-zinc-50">
+          <FeaturedProjects />
+        </StackSection>
+        <StackSection zIndex={30} className="bg-zinc-900 text-zinc-100">
+          <Capabilities />
+        </StackSection>
+        <StackSection zIndex={40} id="about" className="bg-white">
+          <About />
+        </StackSection>
+        <StackSection zIndex={50} className="bg-zinc-50">
+          <Writing posts={posts} />
+        </StackSection>
+        <StackSection zIndex={60} id="contact" className="bg-white">
+          <Contact />
+        </StackSection>
       </main>
       <FooterMinimal name={siteConfig.name} email={siteConfig.email} />
     </div>

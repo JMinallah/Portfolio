@@ -2,7 +2,7 @@ import { capabilities } from "@/lib/portfolio-data";
 
 export function Capabilities() {
   return (
-    <section className="mt-16 rounded-3xl border border-zinc-200 bg-zinc-900 p-8 text-zinc-100 md:p-10">
+    <section className="mx-auto flex h-full w-full max-w-6xl flex-col justify-start px-4 pt-28 sm:px-6 lg:px-8">
       <h2 className="text-2xl font-semibold tracking-tight md:text-3xl">
         Core Capabilities
       </h2>
