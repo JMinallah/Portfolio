@@ -14,7 +14,7 @@ type FooterMinimalProps = {
 const defaultLinks: FooterLink[] = [
   { href: "https://github.com", label: "GitHub" },
   { href: "https://www.linkedin.com", label: "LinkedIn" },
-  { href: "#writing", label: "Writing" },
+  { href: "/blog", label: "Writing" },
 ];
 
 export default function FooterMinimal({

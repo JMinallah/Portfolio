@@ -1,0 +1,24 @@
+export const metadata = {
+  title: "Shipping Motion Without Hurting Performance",
+  date: "2026-03-20",
+  summary:
+    "Practical approach to animation budgets, perceived speed, and meaningful transitions in modern web apps.",
+  tags: ["Frontend", "Performance"],
+};
+
+{/* TODO: replace this placeholder post with your real writing */}
+
+Motion should earn its place on the page. Every animation is a cost —
+CPU/GPU cycles, layout thrash risk, and a delay between "content exists" and
+"content is usable."
+
+## A simple budget
+
+- Prefer CSS transforms/opacity over properties that trigger layout
+- Keep entrance animations under ~600ms
+- Respect `prefers-reduced-motion`
+
+## Where it actually helps
+
+Motion is most valuable as feedback (a button confirming a click) or as
+orientation (a section fading in as it enters view) — not as decoration.

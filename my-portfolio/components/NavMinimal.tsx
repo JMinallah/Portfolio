@@ -16,7 +16,7 @@ type NavMinimalProps = {
 const defaultItems: NavItem[] = [
   { href: "#projects", label: "Projects" },
   { href: "#about", label: "About" },
-  { href: "#writing", label: "Writing" },
+  { href: "/blog", label: "Writing" },
   { href: "#contact", label: "Contact" },
 ];
 

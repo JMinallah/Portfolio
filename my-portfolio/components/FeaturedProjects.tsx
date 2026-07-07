@@ -34,7 +34,7 @@ export function FeaturedProjects() {
               ))}
             </ul>
             <a
-              href={project.href}
+              href={`/work/${project.slug}`}
               className="mt-5 inline-flex text-sm font-medium text-zinc-800 hover:text-zinc-950"
             >
               Explore case study

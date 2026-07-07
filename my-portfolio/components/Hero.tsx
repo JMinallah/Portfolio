@@ -25,7 +25,7 @@ export function Hero() {
           View projects
         </a>
         <a
-          href="#writing"
+          href="/blog"
           className="rounded-full border border-zinc-300 px-5 py-2.5 text-sm font-medium text-zinc-700 transition hover:border-zinc-500 hover:text-zinc-900"
         >
           Read writing
