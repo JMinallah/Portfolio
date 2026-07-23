@@ -2,14 +2,7 @@ import type { Metadata } from "next";
 import FooterMinimal from "@/components/FooterMinimal";
 import NavMinimal from "@/components/NavMinimal";
 import { StackSection } from "@/components/StackSection";
-import { Hero } from "@/components/Hero";
-import { Capabilities } from "@/components/Capabilities";
-import { FeaturedProjects } from "@/components/FeaturedProjects";
-import { About } from "@/components/About";
-import { Writing } from "@/components/Writing";
-import { Contact } from "@/components/Contact";
 import { absoluteUrl, siteConfig } from "@/lib/site-config";
-import { getAllPosts } from "@/lib/blog";
 
 export const metadata: Metadata = {
   title: "Home",
@@ -43,16 +36,23 @@ const personJsonLd = {
   sameAs: [],
 };
 
-export default async function Home() {
-  const posts = (await getAllPosts()).slice(0, 2);
+const sections = [
+  { zIndex: 10, className: "bg-white", title: siteConfig.name },
+  { zIndex: 20, id: "about", className: "bg-zinc-50", title: "About" },
+  { zIndex: 30, id: "projects", className: "bg-white", title: "Projects" },
+  { zIndex: 40, className: "bg-zinc-900 text-zinc-100", title: "Capabilities" },
+  { zIndex: 50, className: "bg-zinc-50", title: "Writing" },
+  { zIndex: 60, id: "contact", className: "bg-white", title: "Contact" },
+];
 
+export default function Home() {
   return (
     <div>
       <NavMinimal
         brand={siteConfig.name}
         items={[
-          { href: "#projects", label: "Projects" },
           { href: "#about", label: "About" },
+          { href: "#projects", label: "Projects" },
           { href: "/blog", label: "Writing" },
           { href: "#contact", label: "Contact" },
         ]}
@@ -66,24 +66,20 @@ export default async function Home() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
       />
       <main>
-        <StackSection zIndex={10} className="bg-white">
-          <Hero />
-        </StackSection>
-        <StackSection zIndex={20} id="projects" className="bg-zinc-50">
-          <FeaturedProjects />
-        </StackSection>
-        <StackSection zIndex={30} className="bg-zinc-900 text-zinc-100">
-          <Capabilities />
-        </StackSection>
-        <StackSection zIndex={40} id="about" className="bg-white">
-          <About />
-        </StackSection>
-        <StackSection zIndex={50} className="bg-zinc-50">
-          <Writing posts={posts} />
-        </StackSection>
-        <StackSection zIndex={60} id="contact" className="bg-white">
-          <Contact />
-        </StackSection>
+        {sections.map((section) => (
+          <StackSection
+            key={section.zIndex}
+            zIndex={section.zIndex}
+            id={section.id}
+            className={section.className}
+          >
+            <div className="mx-auto flex h-full w-full max-w-6xl items-center px-4 sm:px-6 lg:px-8">
+              <h2 className="text-4xl font-semibold tracking-tight md:text-6xl">
+                {section.title}
+              </h2>
+            </div>
+          </StackSection>
+        ))}
       </main>
       <FooterMinimal name={siteConfig.name} email={siteConfig.email} />
     </div>

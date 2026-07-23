@@ -16,7 +16,7 @@ export function StackSection({
   return (
     <div
       id={id}
-      className={`sticky top-0 flex h-screen flex-col overflow-hidden shadow-[0_-30px_60px_-20px_rgba(0,0,0,0.35)] ${className}`}
+      className={`sticky top-0 flex h-screen flex-col overflow-hidden shadow-[0_-8px_20px_-12px_rgba(0,0,0,0.15)] ${className}`}
       style={{ zIndex }}
     >
       {children}

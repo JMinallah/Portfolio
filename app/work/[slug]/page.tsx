@@ -48,8 +48,8 @@ export default async function WorkPage({ params }: WorkPageProps) {
       <NavMinimal
         brand={siteConfig.name}
         items={[
-          { href: "/#projects", label: "Projects" },
           { href: "/#about", label: "About" },
+          { href: "/#projects", label: "Projects" },
           { href: "/blog", label: "Writing" },
           { href: "/#contact", label: "Contact" },
         ]}
