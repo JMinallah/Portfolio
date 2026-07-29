@@ -18,16 +18,6 @@
   --color-clay-300: #e3ae8c;
   --color-clay-600: #b0532f;
   --color-moss-600: #62704a;
-
-  /* Evenly-spaced (equal lightness steps) light -> dark fade for the
-     stacked scroll sections. Not part of the general umber UI scale,
-     which — like Tailwind's own scales — is intentionally non-linear. */
-  --color-fade-1: #faf6ef;
-  --color-fade-2: #ddcab8;
-  --color-fade-3: #c89e73;
-  --color-fade-4: #a2713f;
-  --color-fade-5: #5b442c;
-  --color-fade-6: #1e130c;
 }
 
 html {

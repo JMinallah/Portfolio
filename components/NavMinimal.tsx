@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
-import { Briefcase, Mail, PenLine, User, type LucideIcon } from "lucide-react";
+import { Briefcase, Layers, Mail, PenLine, User, type LucideIcon } from "lucide-react";
 import { scrollToId } from "@/lib/scroll";
 
 type NavItem = {
@@ -19,6 +19,7 @@ type NavMinimalProps = {
 const defaultItems: NavItem[] = [
   { href: "#about", label: "About" },
   { href: "#projects", label: "Projects" },
+  { href: "#capabilities", label: "Capabilities" },
   { href: "/blog", label: "Writing" },
   { href: "#contact", label: "Contact" },
 ];
@@ -26,6 +27,7 @@ const defaultItems: NavItem[] = [
 const navIcons: Record<string, LucideIcon> = {
   About: User,
   Projects: Briefcase,
+  Capabilities: Layers,
   Writing: PenLine,
   Contact: Mail,
 };

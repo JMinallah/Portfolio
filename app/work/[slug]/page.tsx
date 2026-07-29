@@ -50,6 +50,7 @@ export default async function WorkPage({ params }: WorkPageProps) {
         items={[
           { href: "/#about", label: "About" },
           { href: "/#projects", label: "Projects" },
+          { href: "/#capabilities", label: "Capabilities" },
           { href: "/#writing", label: "Writing" },
           { href: "/#contact", label: "Contact" },
         ]}

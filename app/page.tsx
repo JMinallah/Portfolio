@@ -1,9 +1,21 @@
 import type { Metadata } from "next";
+import type { CatVariant } from "@/components/Cat";
 import FooterMinimal from "@/components/FooterMinimal";
 import NavMinimal from "@/components/NavMinimal";
 import { ScrollToHash } from "@/components/ScrollToHash";
 import { StackSection } from "@/components/StackSection";
 import { absoluteUrl, siteConfig } from "@/lib/site-config";
+
+type SectionConfig = {
+  zIndex: number;
+  id?: string;
+  className: string;
+  waveColorClassName?: string;
+  mascotVariant?: CatVariant;
+  mascotSide?: "left" | "right";
+  mascotInContent?: boolean;
+  title: string;
+};
 
 export const metadata: Metadata = {
   title: "Home",
@@ -37,46 +49,51 @@ const personJsonLd = {
   sameAs: [],
 };
 
-const sections = [
+const sections: SectionConfig[] = [
   {
     zIndex: 10,
     id: "name",
-    className: "bg-fade-1",
-    waveColorClassName: undefined,
+    className: "bg-umber-50",
     title: siteConfig.name,
   },
   {
     zIndex: 20,
     id: "about",
-    className: "bg-fade-2",
-    waveColorClassName: "text-fade-2",
+    className: "bg-umber-50",
+    waveColorClassName: "text-umber-50",
+    mascotVariant: "caramel",
     title: "About",
   },
   {
     zIndex: 30,
     id: "projects",
-    className: "bg-fade-3",
-    waveColorClassName: "text-fade-3",
+    className: "bg-umber-50",
+    waveColorClassName: "text-umber-50",
     title: "Projects",
   },
   {
     zIndex: 40,
-    className: "bg-fade-4 text-umber-50",
-    waveColorClassName: "text-fade-4",
+    id: "capabilities",
+    className: "bg-umber-50",
+    waveColorClassName: "text-umber-50",
+    mascotVariant: "caramel",
+    mascotSide: "left",
     title: "Capabilities",
   },
   {
     zIndex: 50,
     id: "writing",
-    className: "bg-fade-5 text-umber-50",
-    waveColorClassName: "text-fade-5",
+    className: "bg-umber-50",
+    waveColorClassName: "text-umber-50",
     title: "Writing",
   },
   {
     zIndex: 60,
     id: "contact",
-    className: "bg-fade-6 text-umber-50",
-    waveColorClassName: "text-fade-6",
+    className: "bg-umber-950 text-umber-50",
+    waveColorClassName: "text-umber-950",
+    mascotVariant: "gold",
+    mascotInContent: true,
     title: "Contact",
   },
 ];
@@ -90,6 +107,7 @@ export default function Home() {
         items={[
           { href: "#about", label: "About" },
           { href: "#projects", label: "Projects" },
+          { href: "#capabilities", label: "Capabilities" },
           { href: "#writing", label: "Writing" },
           { href: "#contact", label: "Contact" },
         ]}
@@ -110,6 +128,9 @@ export default function Home() {
             id={section.id}
             className={section.className}
             waveColorClassName={section.waveColorClassName}
+            mascotVariant={section.mascotVariant}
+            mascotSide={section.mascotSide}
+            mascotInContent={section.mascotInContent}
           >
             <div className="mx-auto flex h-full w-full max-w-6xl items-center px-4 sm:px-6 lg:px-8">
               <h2 className="text-4xl font-semibold tracking-tight md:text-6xl">
