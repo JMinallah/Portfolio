@@ -10,7 +10,7 @@ export function Capabilities() {
         {capabilities.map((item) => (
           <li
             key={item}
-            className="rounded-xl border border-zinc-700/80 bg-zinc-800/70 px-4 py-3 text-sm"
+            className="rounded-xl border border-umber-700/80 bg-umber-800/70 px-4 py-3 text-sm"
           >
             {item}
           </li>

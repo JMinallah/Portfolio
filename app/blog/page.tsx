@@ -23,15 +23,15 @@ export default async function BlogIndexPage() {
         items={[
           { href: "/#about", label: "About" },
           { href: "/#projects", label: "Projects" },
-          { href: "/blog", label: "Writing" },
+          { href: "/#writing", label: "Writing" },
           { href: "/#contact", label: "Contact" },
         ]}
       />
       <main className="mx-auto w-full max-w-4xl px-6 py-16 md:py-24">
-        <h1 className="text-3xl font-semibold tracking-tight text-zinc-900 md:text-4xl">
+        <h1 className="text-3xl font-semibold tracking-tight text-umber-900 md:text-4xl">
           Writing
         </h1>
-        <p className="mt-4 max-w-2xl text-base leading-relaxed text-zinc-600">
+        <p className="mt-4 max-w-2xl text-base leading-relaxed text-umber-600">
           Notes on engineering and on making things findable.
         </p>
 
@@ -39,27 +39,27 @@ export default async function BlogIndexPage() {
           {posts.map((post) => (
             <article
               key={post.slug}
-              className="rounded-2xl border border-zinc-200 bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md"
+              className="rounded-2xl border border-umber-200 bg-umber-50 p-5 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md"
             >
               <Link href={`/blog/${post.slug}`}>
-                <h2 className="text-lg font-semibold text-zinc-900">
+                <h2 className="text-lg font-semibold text-umber-900">
                   {post.metadata.title}
                 </h2>
-                <p className="mt-2 text-sm text-zinc-500">
+                <p className="mt-2 text-sm text-umber-500">
                   {new Date(post.metadata.date).toLocaleDateString("en-US", {
                     year: "numeric",
                     month: "long",
                     day: "numeric",
                   })}
                 </p>
-                <p className="mt-3 text-sm leading-relaxed text-zinc-600">
+                <p className="mt-3 text-sm leading-relaxed text-umber-600">
                   {post.metadata.summary}
                 </p>
                 <ul className="mt-4 flex flex-wrap gap-2">
                   {post.metadata.tags.map((tag) => (
                     <li
                       key={tag}
-                      className="rounded-full bg-zinc-100 px-2.5 py-1 text-xs font-medium text-zinc-700"
+                      className="rounded-full bg-umber-100 px-2.5 py-1 text-xs font-medium text-umber-700"
                     >
                       {tag}
                     </li>

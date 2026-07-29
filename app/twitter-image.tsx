@@ -16,7 +16,7 @@ export default function Image() {
         style={{
           alignItems: "center",
           background:
-            "linear-gradient(140deg, rgb(7, 19, 37), rgb(25, 59, 109), rgb(41, 104, 169))",
+            "linear-gradient(140deg, rgb(30, 19, 12), rgb(97, 67, 39), rgb(183, 143, 96))",
           color: "white",
           display: "flex",
           flexDirection: "column",

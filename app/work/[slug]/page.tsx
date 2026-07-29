@@ -50,22 +50,22 @@ export default async function WorkPage({ params }: WorkPageProps) {
         items={[
           { href: "/#about", label: "About" },
           { href: "/#projects", label: "Projects" },
-          { href: "/blog", label: "Writing" },
+          { href: "/#writing", label: "Writing" },
           { href: "/#contact", label: "Contact" },
         ]}
       />
       <main className="mx-auto w-full max-w-3xl px-6 py-16 md:py-24">
         <Link
           href="/#projects"
-          className="text-sm font-medium text-zinc-500 hover:text-zinc-900"
+          className="text-sm font-medium text-umber-500 hover:text-umber-900"
         >
           ← Back to projects
         </Link>
 
-        <h1 className="mt-4 text-3xl font-semibold tracking-tight text-zinc-900 md:text-4xl">
+        <h1 className="mt-4 text-3xl font-semibold tracking-tight text-umber-900 md:text-4xl">
           {project.title}
         </h1>
-        <p className="mt-4 text-base leading-relaxed text-zinc-600">
+        <p className="mt-4 text-base leading-relaxed text-umber-600">
           {project.summary}
         </p>
 
@@ -73,7 +73,7 @@ export default async function WorkPage({ params }: WorkPageProps) {
           {project.tags.map((tag) => (
             <li
               key={tag}
-              className="rounded-full bg-zinc-100 px-2.5 py-1 text-xs font-medium text-zinc-700"
+              className="rounded-full bg-umber-100 px-2.5 py-1 text-xs font-medium text-umber-700"
             >
               {tag}
             </li>
@@ -82,46 +82,46 @@ export default async function WorkPage({ params }: WorkPageProps) {
 
         <dl className="mt-10 space-y-8">
           <div>
-            <dt className="text-sm font-semibold uppercase tracking-wide text-zinc-500">
+            <dt className="text-sm font-semibold uppercase tracking-wide text-umber-500">
               Role
             </dt>
-            <dd className="mt-2 text-base leading-relaxed text-zinc-700">
+            <dd className="mt-2 text-base leading-relaxed text-umber-700">
               {project.role}
             </dd>
           </div>
 
           <div>
-            <dt className="text-sm font-semibold uppercase tracking-wide text-zinc-500">
+            <dt className="text-sm font-semibold uppercase tracking-wide text-umber-500">
               Stack
             </dt>
-            <dd className="mt-2 text-base leading-relaxed text-zinc-700">
+            <dd className="mt-2 text-base leading-relaxed text-umber-700">
               {project.stack.join(", ")}
             </dd>
           </div>
 
           <div>
-            <dt className="text-sm font-semibold uppercase tracking-wide text-zinc-500">
+            <dt className="text-sm font-semibold uppercase tracking-wide text-umber-500">
               Problem
             </dt>
-            <dd className="mt-2 text-base leading-relaxed text-zinc-700">
+            <dd className="mt-2 text-base leading-relaxed text-umber-700">
               {project.problem}
             </dd>
           </div>
 
           <div>
-            <dt className="text-sm font-semibold uppercase tracking-wide text-zinc-500">
+            <dt className="text-sm font-semibold uppercase tracking-wide text-umber-500">
               Solution
             </dt>
-            <dd className="mt-2 text-base leading-relaxed text-zinc-700">
+            <dd className="mt-2 text-base leading-relaxed text-umber-700">
               {project.solution}
             </dd>
           </div>
 
           <div>
-            <dt className="text-sm font-semibold uppercase tracking-wide text-zinc-500">
+            <dt className="text-sm font-semibold uppercase tracking-wide text-umber-500">
               Outcome
             </dt>
-            <dd className="mt-2 text-base leading-relaxed text-zinc-700">
+            <dd className="mt-2 text-base leading-relaxed text-umber-700">
               {project.outcome}
             </dd>
           </div>

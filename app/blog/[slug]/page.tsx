@@ -68,7 +68,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
         items={[
           { href: "/#about", label: "About" },
           { href: "/#projects", label: "Projects" },
-          { href: "/blog", label: "Writing" },
+          { href: "/#writing", label: "Writing" },
           { href: "/#contact", label: "Contact" },
         ]}
       />
@@ -79,15 +79,15 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
       <main className="mx-auto w-full max-w-3xl px-6 py-16 md:py-24">
         <Link
           href="/blog"
-          className="text-sm font-medium text-zinc-500 hover:text-zinc-900"
+          className="text-sm font-medium text-umber-500 hover:text-umber-900"
         >
           ← Back to writing
         </Link>
 
-        <h1 className="mt-4 text-3xl font-semibold tracking-tight text-zinc-900 md:text-4xl">
+        <h1 className="mt-4 text-3xl font-semibold tracking-tight text-umber-900 md:text-4xl">
           {metadata.title}
         </h1>
-        <p className="mt-2 text-sm text-zinc-500">
+        <p className="mt-2 text-sm text-umber-500">
           {new Date(metadata.date).toLocaleDateString("en-US", {
             year: "numeric",
             month: "long",
@@ -95,7 +95,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           })}
         </p>
 
-        <div className="prose prose-zinc mt-10 max-w-none">
+        <div className="prose prose-umber mt-10 max-w-none">
           <Content />
         </div>
       </main>

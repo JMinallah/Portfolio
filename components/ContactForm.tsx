@@ -24,40 +24,40 @@ export function ContactForm() {
       />
 
       <div className="grid gap-4 sm:grid-cols-2">
-        <label className="grid gap-1.5 text-sm text-zinc-700">
+        <label className="grid gap-1.5 text-sm text-umber-700">
           Name
           <input
             type="text"
             name="name"
             required
-            className="rounded-lg border border-zinc-300 px-3 py-2 text-sm text-zinc-900 outline-none focus:border-zinc-500"
+            className="rounded-lg border border-umber-300 px-3 py-2 text-sm text-umber-900 outline-none focus:border-umber-500"
           />
         </label>
-        <label className="grid gap-1.5 text-sm text-zinc-700">
+        <label className="grid gap-1.5 text-sm text-umber-700">
           Email
           <input
             type="email"
             name="email"
             required
-            className="rounded-lg border border-zinc-300 px-3 py-2 text-sm text-zinc-900 outline-none focus:border-zinc-500"
+            className="rounded-lg border border-umber-300 px-3 py-2 text-sm text-umber-900 outline-none focus:border-umber-500"
           />
         </label>
       </div>
 
-      <label className="grid gap-1.5 text-sm text-zinc-700">
+      <label className="grid gap-1.5 text-sm text-umber-700">
         Message
         <textarea
           name="message"
           required
           rows={5}
-          className="rounded-lg border border-zinc-300 px-3 py-2 text-sm text-zinc-900 outline-none focus:border-zinc-500"
+          className="rounded-lg border border-umber-300 px-3 py-2 text-sm text-umber-900 outline-none focus:border-umber-500"
         />
       </label>
 
       <button
         type="submit"
         disabled={isPending}
-        className="justify-self-start rounded-full bg-zinc-900 px-5 py-2.5 text-sm font-medium text-white transition hover:bg-zinc-700 disabled:cursor-not-allowed disabled:opacity-60"
+        className="justify-self-start rounded-full bg-umber-900 px-5 py-2.5 text-sm font-medium text-umber-50 transition hover:bg-umber-700 disabled:cursor-not-allowed disabled:opacity-60"
       >
         {isPending ? "Sending…" : "Send message"}
       </button>
@@ -67,8 +67,8 @@ export function ContactForm() {
           role="status"
           className={
             state.status === "success"
-              ? "text-sm text-emerald-600"
-              : "text-sm text-red-600"
+              ? "text-sm text-moss-600"
+              : "text-sm text-clay-600"
           }
         >
           {state.message}

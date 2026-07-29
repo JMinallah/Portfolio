@@ -1,13 +1,42 @@
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
 
+@theme {
+  --color-umber-50: #faf6ef;
+  --color-umber-100: #f2e8d8;
+  --color-umber-200: #e4d0b4;
+  --color-umber-300: #d1b187;
+  --color-umber-400: #b78f60;
+  --color-umber-500: #96703f;
+  --color-umber-600: #7c5730;
+  --color-umber-700: #614327;
+  --color-umber-800: #48311d;
+  --color-umber-900: #322014;
+  --color-umber-950: #1e130c;
+
+  --color-gold-300: #e8cc8b;
+  --color-clay-300: #e3ae8c;
+  --color-clay-600: #b0532f;
+  --color-moss-600: #62704a;
+
+  /* Evenly-spaced (equal lightness steps) light -> dark fade for the
+     stacked scroll sections. Not part of the general umber UI scale,
+     which — like Tailwind's own scales — is intentionally non-linear. */
+  --color-fade-1: #faf6ef;
+  --color-fade-2: #ddcab8;
+  --color-fade-3: #c89e73;
+  --color-fade-4: #a2713f;
+  --color-fade-5: #5b442c;
+  --color-fade-6: #1e130c;
+}
+
 html {
   scroll-behavior: smooth;
 }
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: var(--color-umber-50);
+  --foreground: var(--color-umber-900);
   --font-geist-sans: "Segoe UI", "Helvetica Neue", Helvetica, Arial, sans-serif;
   --font-geist-mono: "SFMono-Regular", Menlo, Monaco, Consolas, "Liberation Mono",
     "Courier New", monospace;
@@ -25,6 +54,25 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-geist-sans);
+}
+
+.prose-umber {
+  --tw-prose-body: var(--color-umber-700);
+  --tw-prose-headings: var(--color-umber-900);
+  --tw-prose-lead: var(--color-umber-700);
+  --tw-prose-links: var(--color-umber-900);
+  --tw-prose-bold: var(--color-umber-900);
+  --tw-prose-counters: var(--color-umber-500);
+  --tw-prose-bullets: var(--color-umber-300);
+  --tw-prose-hr: var(--color-umber-200);
+  --tw-prose-quotes: var(--color-umber-900);
+  --tw-prose-quote-borders: var(--color-umber-200);
+  --tw-prose-captions: var(--color-umber-500);
+  --tw-prose-code: var(--color-umber-900);
+  --tw-prose-pre-code: var(--color-umber-100);
+  --tw-prose-pre-bg: var(--color-umber-900);
+  --tw-prose-th-borders: var(--color-umber-300);
+  --tw-prose-td-borders: var(--color-umber-200);
 }
 
 @keyframes reveal {
