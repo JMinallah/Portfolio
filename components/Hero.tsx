@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { siteConfig } from "@/lib/site-config";
 
 export function Hero() {
@@ -24,12 +25,12 @@ export function Hero() {
         >
           View projects
         </a>
-        <a
+        <Link
           href="/blog"
           className="rounded-full border border-umber-300 px-5 py-2.5 text-sm font-medium text-umber-700 transition hover:border-umber-500 hover:text-umber-900"
         >
           Read writing
-        </a>
+        </Link>
       </div>
     </section>
   );

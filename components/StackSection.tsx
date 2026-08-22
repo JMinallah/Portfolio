@@ -1,5 +1,4 @@
 import type { ReactNode } from "react";
-import { Cat, type CatVariant } from "@/components/Cat";
 
 type StackSectionProps = {
   children: ReactNode;
@@ -7,10 +6,6 @@ type StackSectionProps = {
   id?: string;
   className?: string;
   waveColorClassName?: string;
-  mascotVariant?: CatVariant;
-  mascotSide?: "left" | "right";
-  /** Contact's cat sits inside the section's own (dark) content instead of up in the margin. */
-  mascotInContent?: boolean;
 };
 
 export function StackSection({
@@ -19,9 +14,6 @@ export function StackSection({
   id,
   className = "",
   waveColorClassName,
-  mascotVariant,
-  mascotSide = "right",
-  mascotInContent = false,
 }: StackSectionProps) {
   return (
     <>
@@ -51,25 +43,6 @@ export function StackSection({
                 fill="currentColor"
               />
             </svg>
-          </div>
-        ) : null}
-        {mascotVariant ? (
-          <div
-            className={
-              mascotInContent
-                ? mascotSide === "left"
-                  ? "pointer-events-none absolute left-[6%] top-24 z-10"
-                  : "pointer-events-none absolute right-[6%] top-24 z-10"
-                : mascotSide === "left"
-                  ? "pointer-events-none absolute left-[6%] -top-[64px] z-10"
-                  : "pointer-events-none absolute right-[6%] -top-[64px] z-10"
-            }
-          >
-            <Cat
-              id={id ?? String(zIndex)}
-              variant={mascotVariant}
-              className="h-[72px] w-[72px] drop-shadow-[0_8px_12px_rgba(30,19,12,0.22)]"
-            />
           </div>
         ) : null}
         <div className={`flex h-full flex-col overflow-hidden ${className}`}>

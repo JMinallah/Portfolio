@@ -1,9 +1,16 @@
 import type { Metadata } from "next";
-import type { CatVariant } from "@/components/Cat";
+import type { ReactNode } from "react";
+import { About } from "@/components/About";
+import { Capabilities } from "@/components/Capabilities";
+import { Contact } from "@/components/Contact";
+import { FeaturedProjects } from "@/components/FeaturedProjects";
 import FooterMinimal from "@/components/FooterMinimal";
+import { Hero } from "@/components/Hero";
 import NavMinimal from "@/components/NavMinimal";
 import { ScrollToHash } from "@/components/ScrollToHash";
 import { StackSection } from "@/components/StackSection";
+import { Writing } from "@/components/Writing";
+import { getAllPosts } from "@/lib/blog";
 import { absoluteUrl, siteConfig } from "@/lib/site-config";
 
 type SectionConfig = {
@@ -11,10 +18,7 @@ type SectionConfig = {
   id?: string;
   className: string;
   waveColorClassName?: string;
-  mascotVariant?: CatVariant;
-  mascotSide?: "left" | "right";
-  mascotInContent?: boolean;
-  title: string;
+  content: ReactNode;
 };
 
 export const metadata: Metadata = {
@@ -49,56 +53,53 @@ const personJsonLd = {
   sameAs: [],
 };
 
-const sections: SectionConfig[] = [
-  {
-    zIndex: 10,
-    id: "name",
-    className: "bg-umber-50",
-    title: siteConfig.name,
-  },
-  {
-    zIndex: 20,
-    id: "about",
-    className: "bg-umber-50",
-    waveColorClassName: "text-umber-50",
-    mascotVariant: "caramel",
-    title: "About",
-  },
-  {
-    zIndex: 30,
-    id: "projects",
-    className: "bg-umber-50",
-    waveColorClassName: "text-umber-50",
-    title: "Projects",
-  },
-  {
-    zIndex: 40,
-    id: "capabilities",
-    className: "bg-umber-50",
-    waveColorClassName: "text-umber-50",
-    mascotVariant: "caramel",
-    mascotSide: "left",
-    title: "Capabilities",
-  },
-  {
-    zIndex: 50,
-    id: "writing",
-    className: "bg-umber-50",
-    waveColorClassName: "text-umber-50",
-    title: "Writing",
-  },
-  {
-    zIndex: 60,
-    id: "contact",
-    className: "bg-umber-950 text-umber-50",
-    waveColorClassName: "text-umber-950",
-    mascotVariant: "gold",
-    mascotInContent: true,
-    title: "Contact",
-  },
-];
+export default async function Home() {
+  const posts = await getAllPosts();
 
-export default function Home() {
+  const sections: SectionConfig[] = [
+    {
+      zIndex: 10,
+      id: "name",
+      className: "bg-umber-50",
+      content: <Hero />,
+    },
+    {
+      zIndex: 20,
+      id: "about",
+      className: "bg-umber-50",
+      waveColorClassName: "text-umber-50",
+      content: <About />,
+    },
+    {
+      zIndex: 30,
+      id: "projects",
+      className: "bg-umber-50",
+      waveColorClassName: "text-umber-50",
+      content: <FeaturedProjects />,
+    },
+    {
+      zIndex: 40,
+      id: "capabilities",
+      className: "bg-umber-50",
+      waveColorClassName: "text-umber-50",
+      content: <Capabilities />,
+    },
+    {
+      zIndex: 50,
+      id: "writing",
+      className: "bg-umber-50",
+      waveColorClassName: "text-umber-50",
+      content: <Writing posts={posts} />,
+    },
+    {
+      zIndex: 60,
+      id: "contact",
+      className: "bg-umber-950 text-umber-50",
+      waveColorClassName: "text-umber-950",
+      content: <Contact />,
+    },
+  ];
+
   return (
     <div>
       <ScrollToHash />
@@ -128,15 +129,8 @@ export default function Home() {
             id={section.id}
             className={section.className}
             waveColorClassName={section.waveColorClassName}
-            mascotVariant={section.mascotVariant}
-            mascotSide={section.mascotSide}
-            mascotInContent={section.mascotInContent}
           >
-            <div className="mx-auto flex h-full w-full max-w-6xl items-center px-4 sm:px-6 lg:px-8">
-              <h2 className="text-4xl font-semibold tracking-tight md:text-6xl">
-                {section.title}
-              </h2>
-            </div>
+            {section.content}
           </StackSection>
         ))}
       </main>
