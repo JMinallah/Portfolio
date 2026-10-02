@@ -2,15 +2,15 @@ import { capabilities } from "@/lib/portfolio-data";
 
 export function Capabilities() {
   return (
-    <section className="mx-auto flex h-full w-full max-w-6xl flex-col justify-start px-4 pt-28 sm:px-6 lg:px-8">
-      <h2 className="text-2xl font-semibold tracking-tight text-umber-900 md:text-3xl">
-        Core Capabilities
+    <section className="h-full rounded-2xl border border-stone-200 bg-white p-5">
+      <h2 className="text-lg font-semibold tracking-tight text-forest">
+        Capabilities
       </h2>
-      <ul className="mt-6 grid gap-3 md:grid-cols-2">
+      <ul className="mt-3 space-y-2">
         {capabilities.map((item) => (
           <li
             key={item}
-            className="rounded-xl border border-umber-200 bg-umber-100/60 px-4 py-3 text-sm text-umber-700"
+            className="rounded-lg bg-stone-100 px-3 py-2 text-xs leading-snug text-stone-700"
           >
             {item}
           </li>

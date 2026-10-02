@@ -74,6 +74,14 @@ export const skillGroups: SkillGroup[] = [
       "Core Web Vitals optimization",
     ],
   },
+  {
+    title: "AI & ML",
+    skills: ["Machine Learning", "Data Engineering", "LLM Integration", "Python"],
+  },
+  {
+    title: "AI Tooling",
+    skills: ["Claude / GPT APIs", "LangChain", "Vector Databases", "Prompt Engineering"],
+  },
 ];
 
 export const capabilities = [

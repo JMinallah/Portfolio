@@ -12,17 +12,17 @@ export default function FooterMinimal({
   const year = new Date().getFullYear();
 
   return (
-    <footer className="border-t border-umber-900/10 bg-umber-50">
-      <div className="mx-auto flex w-full max-w-6xl flex-wrap items-center justify-center gap-x-3 gap-y-1 px-8 py-4 text-center text-sm text-umber-500 sm:px-10 lg:px-12">
+    <footer className="border-t border-stone-900/10 bg-champagne">
+      <div className="mx-auto flex w-full max-w-6xl flex-wrap items-center justify-center gap-x-3 gap-y-1 px-8 py-4 text-center text-sm text-stone-600 sm:px-10 lg:px-12">
         <p>
           © {year} {name}
         </p>
-        <span className="text-umber-300" aria-hidden="true">
+        <span className="text-stone-400" aria-hidden="true">
           &middot;
         </span>
         <Link
           href={`mailto:${email}`}
-          className="text-umber-600 transition-colors hover:text-umber-950"
+          className="text-forest transition-colors hover:underline"
         >
           {email}
         </Link>

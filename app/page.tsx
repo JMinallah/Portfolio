@@ -1,25 +1,11 @@
 import type { Metadata } from "next";
-import type { ReactNode } from "react";
 import { About } from "@/components/About";
 import { Capabilities } from "@/components/Capabilities";
 import { Contact } from "@/components/Contact";
 import { FeaturedProjects } from "@/components/FeaturedProjects";
 import FooterMinimal from "@/components/FooterMinimal";
 import { Hero } from "@/components/Hero";
-import NavMinimal from "@/components/NavMinimal";
-import { ScrollToHash } from "@/components/ScrollToHash";
-import { StackSection } from "@/components/StackSection";
-import { Writing } from "@/components/Writing";
-import { getAllPosts } from "@/lib/blog";
 import { absoluteUrl, siteConfig } from "@/lib/site-config";
-
-type SectionConfig = {
-  zIndex: number;
-  id?: string;
-  className: string;
-  waveColorClassName?: string;
-  content: ReactNode;
-};
 
 export const metadata: Metadata = {
   title: "Home",
@@ -53,66 +39,9 @@ const personJsonLd = {
   sameAs: [],
 };
 
-export default async function Home() {
-  const posts = await getAllPosts();
-
-  const sections: SectionConfig[] = [
-    {
-      zIndex: 10,
-      id: "name",
-      className: "bg-umber-50",
-      content: <Hero />,
-    },
-    {
-      zIndex: 20,
-      id: "about",
-      className: "bg-umber-50",
-      waveColorClassName: "text-umber-50",
-      content: <About />,
-    },
-    {
-      zIndex: 30,
-      id: "projects",
-      className: "bg-umber-50",
-      waveColorClassName: "text-umber-50",
-      content: <FeaturedProjects />,
-    },
-    {
-      zIndex: 40,
-      id: "capabilities",
-      className: "bg-umber-50",
-      waveColorClassName: "text-umber-50",
-      content: <Capabilities />,
-    },
-    {
-      zIndex: 50,
-      id: "writing",
-      className: "bg-umber-50",
-      waveColorClassName: "text-umber-50",
-      content: <Writing posts={posts} />,
-    },
-    {
-      zIndex: 60,
-      id: "contact",
-      className: "bg-umber-950 text-umber-50",
-      waveColorClassName: "text-umber-950",
-      content: <Contact />,
-    },
-  ];
-
+export default function Home() {
   return (
-    <div>
-      <ScrollToHash />
-      <NavMinimal
-        brand={siteConfig.name}
-        items={[
-          { href: "#about", label: "About" },
-          { href: "#projects", label: "Projects" },
-          { href: "#capabilities", label: "Capabilities" },
-          { href: "#writing", label: "Writing" },
-          { href: "#contact", label: "Contact" },
-        ]}
-      />
+    <div className="flex min-h-full flex-col bg-champagne">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
@@ -121,18 +50,22 @@ export default async function Home() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
       />
-      <main>
-        {sections.map((section) => (
-          <StackSection
-            key={section.zIndex}
-            zIndex={section.zIndex}
-            id={section.id}
-            className={section.className}
-            waveColorClassName={section.waveColorClassName}
-          >
-            {section.content}
-          </StackSection>
-        ))}
+      <main className="mx-auto w-full max-w-6xl flex-1 px-4 pb-10 pt-8 sm:px-6 lg:px-8">
+        <Hero />
+        <div className="mt-6 grid grid-cols-1 gap-4 lg:grid-cols-12">
+          <div id="about" className="lg:col-span-5">
+            <About />
+          </div>
+          <div id="projects" className="lg:col-span-7">
+            <FeaturedProjects />
+          </div>
+          <div id="capabilities" className="lg:col-span-6">
+            <Capabilities />
+          </div>
+          <div id="contact" className="lg:col-span-6">
+            <Contact />
+          </div>
+        </div>
       </main>
       <FooterMinimal name={siteConfig.name} email={siteConfig.email} />
     </div>

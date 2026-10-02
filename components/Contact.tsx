@@ -3,24 +3,19 @@ import { siteConfig } from "@/lib/site-config";
 
 export function Contact() {
   return (
-    <section className="mx-auto flex h-full w-full max-w-6xl flex-col justify-start px-4 pt-28 sm:px-6 lg:px-8">
-      <div className="mb-6">
-        <h2 className="text-2xl font-semibold tracking-tight text-umber-50 md:text-3xl">
-          Contact
-        </h2>
-        <p className="mt-2 max-w-2xl text-sm text-umber-200">
-          Have a project in mind? Send a message, or email me directly at{" "}
-          <a
-            href={`mailto:${siteConfig.email}`}
-            className="font-medium text-umber-50 hover:text-white"
-          >
-            {siteConfig.email}
-          </a>
-          .
-        </p>
-      </div>
-
-      <div className="rounded-3xl border border-umber-200 bg-umber-50 p-6 shadow-sm md:p-10">
+    <section className="h-full rounded-2xl border border-forest bg-forest p-5">
+      <h2 className="text-lg font-semibold tracking-tight text-champagne">Contact</h2>
+      <p className="mt-1 text-xs text-champagne/70">
+        Have a project in mind? Email{" "}
+        <a
+          href={`mailto:${siteConfig.email}`}
+          className="font-medium text-champagne hover:underline"
+        >
+          {siteConfig.email}
+        </a>{" "}
+        or send a message.
+      </p>
+      <div className="mt-4">
         <ContactForm />
       </div>
     </section>
