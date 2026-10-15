@@ -3,6 +3,7 @@
 @theme {
   --color-forest: #102c26;
   --color-champagne: #f7e7ce;
+  --color-paper: #fcf6ec;
 }
 
 html {
@@ -12,6 +13,7 @@ html {
 :root {
   --background: var(--color-champagne);
   --foreground: var(--color-forest);
+  --page-turn: 560ms;
 }
 
 @layer base {
@@ -27,4 +29,194 @@ body {
   color: var(--foreground);
   font-family: var(--font-sans), "Segoe UI", "Helvetica Neue", Helvetica, Arial,
     sans-serif;
+}
+
+/* ---------- Book page ---------- */
+
+.book-page {
+  position: relative;
+  background: var(--color-paper);
+  border-radius: 0.375rem 1.25rem 1.25rem 0.375rem;
+  box-shadow:
+    0 1px 2px rgb(16 44 38 / 0.06),
+    0 18px 40px -20px rgb(16 44 38 / 0.25);
+}
+
+/* Soft shading along the left edge, where a page meets the spine. */
+.book-page::before {
+  content: "";
+  position: absolute;
+  inset-block: 0;
+  left: 0;
+  width: 1.25rem;
+  border-radius: inherit;
+  background: linear-gradient(to right, rgb(16 44 38 / 0.08), transparent);
+  pointer-events: none;
+}
+
+/* ---------- Tech strip ---------- */
+
+.tech-strip {
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    #000 12%,
+    #000 88%,
+    transparent
+  );
+}
+
+.tech-track {
+  animation: tech-scroll 40s linear infinite;
+}
+
+.tech-strip:hover .tech-track,
+.tech-strip:focus-within .tech-track {
+  animation-play-state: paused;
+}
+
+@keyframes tech-scroll {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* ---------- Page transitions ---------- */
+
+/* The name, tabs and tech strip stay put while pages turn. */
+::view-transition-group(site-header),
+::view-transition-group(tech-strip) {
+  animation: none;
+  z-index: 100;
+}
+::view-transition-old(site-header),
+::view-transition-old(tech-strip) {
+  display: none;
+}
+::view-transition-new(site-header),
+::view-transition-new(tech-strip) {
+  animation: none;
+}
+
+::view-transition-group(tab-indicator) {
+  animation-duration: 450ms;
+  animation-timing-function: cubic-bezier(0.2, 0.8, 0.2, 1);
+  z-index: 101;
+}
+
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+}
+
+/* Forward: the current page swings away around its spine, revealing the next. */
+::view-transition-group(.flip-out),
+::view-transition-group(.flip-in) {
+  z-index: 2;
+}
+::view-transition-old(.flip-out) {
+  transform-origin: left center;
+  animation: page-turn-away var(--page-turn) cubic-bezier(0.45, 0, 0.55, 1)
+    both;
+}
+::view-transition-new(.flip-under) {
+  animation: page-uncover var(--page-turn) ease-out both;
+}
+
+/* Back: the previous page swings back over the current one. */
+::view-transition-new(.flip-in) {
+  transform-origin: left center;
+  animation: page-turn-away var(--page-turn) cubic-bezier(0.45, 0, 0.55, 1)
+    reverse both;
+}
+::view-transition-old(.flip-stay) {
+  animation: page-uncover var(--page-turn) ease-in reverse both;
+}
+
+@keyframes page-turn-away {
+  from {
+    transform: perspective(2600px) rotateY(0deg);
+    filter: brightness(1);
+  }
+  /* The page stays solid; it only vanishes once it is edge-on. */
+  99% {
+    opacity: 1;
+  }
+  to {
+    transform: perspective(2600px) rotateY(-90deg);
+    filter: brightness(0.75);
+    opacity: 0;
+  }
+}
+@keyframes page-uncover {
+  from {
+    filter: brightness(0.9);
+  }
+  to {
+    filter: brightness(1);
+  }
+}
+
+/* Opening a project: its title grows into the case study heading. */
+::view-transition-group(.project-morph) {
+  animation-duration: 420ms;
+  animation-timing-function: cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+::view-transition-image-pair(.project-morph) {
+  animation-name: via-blur;
+}
+::view-transition-group(.page-reveal) {
+  z-index: 2;
+}
+::view-transition-old(.page-hold) {
+  animation: fade-out 140ms ease-in both;
+}
+::view-transition-new(.page-reveal) {
+  animation: page-reveal 260ms ease-out 120ms both;
+}
+
+@keyframes via-blur {
+  30% {
+    filter: blur(3px);
+  }
+}
+@keyframes page-reveal {
+  from {
+    opacity: 0;
+  }
+}
+@keyframes fade-out {
+  to {
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tech-track {
+    animation: none;
+    width: auto;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .tech-track > [aria-hidden="true"] {
+    display: none;
+  }
+  .tech-strip {
+    mask-image: none;
+  }
+
+  /* Turns and morphs become a short crossfade. */
+  ::view-transition-group(*) {
+    animation-duration: 0s !important;
+  }
+  ::view-transition-old(.flip-out),
+  ::view-transition-old(.flip-stay),
+  ::view-transition-old(.page-hold) {
+    animation: fade-out 200ms ease both;
+  }
+  ::view-transition-new(.flip-in),
+  ::view-transition-new(.flip-under),
+  ::view-transition-new(.page-reveal) {
+    animation: page-reveal 200ms ease both;
+  }
 }

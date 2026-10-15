@@ -75,18 +75,16 @@ export const skillGroups: SkillGroup[] = [
     ],
   },
   {
-    title: "AI & ML",
-    skills: ["Machine Learning", "Data Engineering", "LLM Integration", "Python"],
-  },
-  {
-    title: "AI Tooling",
-    skills: ["Claude / GPT APIs", "LangChain", "Vector Databases", "Prompt Engineering"],
+    title: "AI",
+    skills: [
+      "LLM integration (Claude / GPT APIs)",
+      "LangChain",
+      "Vector databases",
+      "Prompt engineering",
+      "Machine learning",
+      "Data engineering",
+      "Python",
+    ],
   },
 ];
 
-export const capabilities = [
-  "Full-stack web app development (React/Next.js + Node/Express or PHP)",
-  "Technical SEO and AEO-focused content architecture",
-  "Performance-tuned, accessible frontend builds",
-  "API design and integration",
-] as const;

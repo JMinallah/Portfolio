@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import { IBM_Plex_Sans } from "next/font/google";
 import "./globals.css";
+import { BookControls } from "@/components/BookControls";
+import { SiteFooter } from "@/components/SiteFooter";
+import { SiteHeader } from "@/components/SiteHeader";
 import { siteConfig } from "@/lib/site-config";
 
 const ibmPlexSans = IBM_Plex_Sans({
@@ -62,7 +65,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`h-full antialiased ${ibmPlexSans.variable}`}>
-      <body>{children}</body>
+      <body className="flex min-h-full flex-col">
+        <SiteHeader />
+        <main className="mx-auto w-full max-w-3xl flex-1 px-4 sm:px-6">
+          {children}
+        </main>
+        <SiteFooter />
+        <BookControls />
+      </body>
     </html>
   );
 }

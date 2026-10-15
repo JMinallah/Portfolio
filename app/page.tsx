@@ -1,10 +1,6 @@
 import type { Metadata } from "next";
-import { About } from "@/components/About";
-import { Capabilities } from "@/components/Capabilities";
-import { Contact } from "@/components/Contact";
-import { FeaturedProjects } from "@/components/FeaturedProjects";
-import FooterMinimal from "@/components/FooterMinimal";
-import { Hero } from "@/components/Hero";
+import Link from "next/link";
+import { BookPage } from "@/components/BookPage";
 import { absoluteUrl, siteConfig } from "@/lib/site-config";
 
 export const metadata: Metadata = {
@@ -41,7 +37,7 @@ const personJsonLd = {
 
 export default function Home() {
   return (
-    <div className="flex min-h-full flex-col bg-champagne">
+    <BookPage>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
@@ -50,24 +46,34 @@ export default function Home() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
       />
-      <main className="mx-auto w-full max-w-6xl flex-1 px-4 pb-10 pt-8 sm:px-6 lg:px-8">
-        <Hero />
-        <div className="mt-6 grid grid-cols-1 gap-4 lg:grid-cols-12">
-          <div id="about" className="lg:col-span-5">
-            <About />
-          </div>
-          <div id="projects" className="lg:col-span-7">
-            <FeaturedProjects />
-          </div>
-          <div id="capabilities" className="lg:col-span-6">
-            <Capabilities />
-          </div>
-          <div id="contact" className="lg:col-span-6">
-            <Contact />
-          </div>
+      <div className="flex flex-col items-center text-center">
+        {/* TODO: replace with your photo, e.g. <Image src="/me.jpg" … className="rounded-full" /> */}
+        <div
+          aria-hidden="true"
+          className="flex h-28 w-28 items-center justify-center rounded-full bg-forest text-3xl font-semibold text-champagne sm:h-32 sm:w-32"
+        >
+          JM
         </div>
-      </main>
-      <FooterMinimal name={siteConfig.name} email={siteConfig.email} />
-    </div>
+
+        <h1 className="mt-8 max-w-md text-2xl font-semibold leading-snug tracking-tight text-forest sm:text-3xl">
+          Hi, I build fast, discoverable web apps.
+        </h1>
+        <p className="mt-4 max-w-md text-base leading-relaxed text-stone-600">
+          Full-stack developer working across React, Next.js, Node and PHP,
+          with technical SEO and AEO built in from the first line of code.
+        </p>
+
+        <Link
+          href="/work"
+          transitionTypes={["flip-forward"]}
+          className="mt-8 rounded-full bg-forest px-6 py-3 text-sm font-medium text-champagne transition hover:brightness-125"
+        >
+          Open the book →
+        </Link>
+        <p className="mt-4 text-xs text-stone-500">
+          Swipe, or use the ← → keys, to turn pages.
+        </p>
+      </div>
+    </BookPage>
   );
 }
