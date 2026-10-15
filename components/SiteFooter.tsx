@@ -44,7 +44,7 @@ export function SiteFooter() {
               <li
                 key={`${icon.slug}-${i}`}
                 aria-hidden={isCopy || undefined}
-                className="group relative px-5 text-forest/60 transition-colors hover:text-forest sm:px-7"
+                className="on-ground group relative px-5 text-paper/75 transition-colors hover:text-paper sm:px-7"
               >
                 <svg
                   role="img"
@@ -56,7 +56,7 @@ export function SiteFooter() {
                 </svg>
                 <span
                   aria-hidden="true"
-                  className="pointer-events-none absolute -top-5 left-1/2 -translate-x-1/2 whitespace-nowrap text-[11px] font-medium text-forest opacity-0 transition-opacity group-hover:opacity-100"
+                  className="pointer-events-none absolute -top-5 left-1/2 -translate-x-1/2 whitespace-nowrap text-[11px] font-medium text-paper opacity-0 transition-opacity group-hover:opacity-100"
                 >
                   {icon.title}
                 </span>

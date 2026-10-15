@@ -12,12 +12,12 @@ export function SiteHeader() {
   return (
     <header
       style={{ viewTransitionName: "site-header" }}
-      className="px-4 pb-5 pt-7 text-center sm:pb-8 sm:pt-12"
+      className="on-ground px-4 pb-5 pt-7 text-center sm:pb-8 sm:pt-12"
     >
       <Link
         href="/"
         transitionTypes={transitionTypesFor(pathname, "/")}
-        className="text-2xl font-semibold tracking-tight text-forest sm:text-3xl"
+        className="text-2xl font-semibold tracking-tight text-paper sm:text-3xl"
       >
         {siteConfig.name}
       </Link>
@@ -29,7 +29,7 @@ export function SiteHeader() {
             return (
               <li key={tab.href} className="flex items-center gap-3 sm:gap-4">
                 {i > 0 ? (
-                  <span aria-hidden="true" className="text-forest/30">
+                  <span aria-hidden="true" className="text-paper/40">
                     ·
                   </span>
                 ) : null}
@@ -39,8 +39,8 @@ export function SiteHeader() {
                   aria-current={isActive ? "page" : undefined}
                   className={`relative py-1 font-medium transition-colors ${
                     isActive
-                      ? "text-forest"
-                      : "text-forest/55 hover:text-forest"
+                      ? "text-paper"
+                      : "text-paper/75 hover:text-paper"
                   }`}
                 >
                   {tab.label}
@@ -48,7 +48,7 @@ export function SiteHeader() {
                     <span
                       aria-hidden="true"
                       style={{ viewTransitionName: "tab-indicator" }}
-                      className="absolute inset-x-0 -bottom-0.5 h-0.5 rounded-full bg-forest"
+                      className="absolute inset-x-0 -bottom-0.5 h-0.5 rounded-full bg-paper"
                     />
                   ) : null}
                 </Link>

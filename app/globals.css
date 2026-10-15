@@ -7,6 +7,8 @@
   --color-forest: #102c26;
   --color-champagne: #f7e7ce;
   --color-paper: #fcf6ec;
+  --color-terracotta: #b4442c;
+  --font-serif: var(--font-plex-serif), Georgia, "Times New Roman", serif;
 }
 
 html {
@@ -14,7 +16,8 @@ html {
 }
 
 :root {
-  --background: var(--color-champagne);
+  /* Shown while the forest floor photo loads. */
+  --background: #0f1e19;
   --foreground: var(--color-forest);
   --page-turn: 560ms;
   --leaf-turn: 320ms;
@@ -35,13 +38,45 @@ body {
     sans-serif;
 }
 
+/* The ground the book rests on: a forest floor photo, dimmed with a forest
+   tint so the cream header and icons stay readable. It sits on a fixed layer
+   rather than on body so it stays put on iOS, which ignores fixed body
+   backgrounds. Photo: "Green forest carpet" by Dimitri Yakymuk, CC0,
+   https://commons.wikimedia.org/wiki/File:Green_forest_carpet_(Unsplash).jpg */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background:
+    linear-gradient(rgb(16 44 38 / 0.22), rgb(16 44 38 / 0.34)),
+    url("/backgrounds/forest-floor-2560.webp") center / cover no-repeat,
+    var(--background);
+}
+@media (max-width: 800px) {
+  body::before {
+    background-image:
+      linear-gradient(rgb(16 44 38 / 0.22), rgb(16 44 38 / 0.34)),
+      url("/backgrounds/forest-floor-1400.webp");
+  }
+}
+
+/* Text that sits directly on the ground rather than on paper. */
+.on-ground {
+  text-shadow: 0 1px 3px rgb(0 0 0 / 0.45);
+}
+.on-ground svg {
+  filter: drop-shadow(0 1px 2px rgb(0 0 0 / 0.4));
+}
+
 /* ---------- Book ---------- */
 
 /* Narrow screens: one sheet, with both halves stacked on it. */
 .book {
   --spine-shade: rgb(16 44 38 / 0.08);
+  /* Deep enough to lift the paper off the forest floor. */
   --paper-shadow:
-    0 1px 2px rgb(16 44 38 / 0.06), 0 18px 40px -20px rgb(16 44 38 / 0.25);
+    0 2px 4px rgb(0 0 0 / 0.18), 0 28px 60px -18px rgb(0 0 0 / 0.6);
   --pad-y: 2.5rem;
   --pad-x: 1.5rem;
   --fade: 2.5rem;
@@ -142,7 +177,11 @@ body {
     font-weight: 600;
     letter-spacing: 0.08em;
     text-transform: uppercase;
-    color: rgb(16 44 38 / calc(var(--more) * 0.55));
+    color: color-mix(
+      in srgb,
+      var(--color-terracotta) calc(var(--more) * 100%),
+      transparent
+    );
   }
   /* Only the scrolling element gets fades: the sheet on narrow screens, each
      leaf on the spread. */
@@ -206,6 +245,146 @@ body {
     background:
       linear-gradient(to right, var(--spine-shade), transparent 2rem),
       var(--color-paper);
+  }
+}
+
+/* When the book is fitted to the screen, the spread's pages take the space
+   they are given (and scroll inside) instead of insisting on a minimum. */
+@media (min-width: 1200px) and (min-height: 520px) {
+  .book > .leaf,
+  .book[data-single] > .leaf {
+    min-height: 0;
+  }
+}
+
+/* ---------- Covers ---------- */
+
+/* Cream linen bookcloth: a faint weave, a soft sheen, and a darker band
+   where the cover hinges at the spine (left on the front, right on the
+   back). Lettering is deep forest green. */
+.book[data-cover] {
+  --pad-y: 1.25rem;
+  --pad-x: 1.25rem;
+  --fade: 1.25rem;
+  --cloth: #eadbbd;
+  --cloth-weave:
+    repeating-linear-gradient(
+      0deg,
+      rgb(255 255 255 / 0.22) 0 1px,
+      transparent 1px 3px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      rgb(16 44 38 / 0.045) 0 1px,
+      transparent 1px 3px
+    ),
+    radial-gradient(
+      ellipse at 35% 25%,
+      rgb(255 255 255 / 0.35),
+      transparent 65%
+    );
+  --cover-bg:
+    linear-gradient(
+      to right,
+      rgb(16 44 38 / 0.2),
+      rgb(16 44 38 / 0.06) 1.25rem,
+      rgb(255 255 255 / 0.3) 1.4rem,
+      transparent 1.6rem
+    ),
+    var(--cloth-weave), var(--cloth);
+  background: var(--cover-bg);
+  color: var(--color-forest);
+}
+.book[data-cover="back"] {
+  --cover-bg:
+    linear-gradient(
+      to left,
+      rgb(16 44 38 / 0.2),
+      rgb(16 44 38 / 0.06) 1.25rem,
+      rgb(255 255 255 / 0.3) 1.4rem,
+      transparent 1.6rem
+    ),
+    var(--cloth-weave), var(--cloth);
+  border-radius: 1.25rem 0.375rem 0.375rem 1.25rem;
+}
+.book[data-cover] > .leaf {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+
+/* A thin double rule framing the lettering, as stamped on a hardcover. */
+.cover-frame {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  justify-content: safe center;
+  padding: 1.75rem 1rem;
+  text-align: center;
+  border: 1px solid rgb(16 44 38 / 0.3);
+  border-radius: 0.75rem;
+  outline: 1px solid rgb(16 44 38 / 0.14);
+  outline-offset: -7px;
+}
+
+.cover-label {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: rgb(16 44 38 / 0.7);
+}
+
+@media (min-width: 640px) {
+  .book[data-cover] {
+    --pad-y: 1.75rem;
+    --pad-x: 1.75rem;
+    --fade: 1.75rem;
+  }
+  .cover-frame {
+    padding: 2.5rem 1.5rem;
+  }
+}
+
+/* Short screens: a compact cover that fits without scrolling. Plain CSS here
+   outranks the Tailwind utilities on these elements. */
+@media (max-height: 820px) {
+  .book[data-cover] {
+    --pad-y: 1.25rem;
+    --pad-x: 1.25rem;
+    --fade: 1.25rem;
+  }
+  .cover-frame {
+    padding: 1.25rem 1rem;
+  }
+  .cover-frame > * {
+    margin-top: 0.75rem;
+  }
+  .cover-frame > .cover-label {
+    margin-top: 0;
+  }
+  .cover-frame > .cover-photo {
+    width: 5rem;
+    height: 5rem;
+    font-size: 1.5rem;
+  }
+  .cover-frame > .cover-extra {
+    display: none;
+  }
+}
+
+/* On the spread a cover stays one page: the closed book, centred. */
+@media (min-width: 1200px) {
+  .book[data-cover] {
+    grid-template-columns: minmax(0, 1fr);
+    width: 50%;
+    align-self: center;
+    background: none;
+  }
+  .book[data-cover] > .leaf {
+    padding: var(--pad-y);
+    background: var(--cover-bg);
   }
 }
 
@@ -416,6 +595,17 @@ html:active-view-transition-type(flip-back) {
     transform-origin: left center;
     animation: leaf-lift-right var(--leaf-turn) ease-out var(--leaf-turn)
       reverse both;
+  }
+}
+
+/* Opening or closing the book on the spread: the single cover slides
+   between the middle of the screen and its side of the spine while it turns. */
+html:active-view-transition-type(cover) {
+  &::view-transition-group(leaf-left),
+  &::view-transition-group(leaf-right) {
+    animation: revert;
+    animation-duration: calc(var(--leaf-turn) * 2);
+    animation-timing-function: cubic-bezier(0.45, 0, 0.55, 1);
   }
 }
 

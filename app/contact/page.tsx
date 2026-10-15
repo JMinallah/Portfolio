@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { BookPage } from "@/components/BookPage";
 import { ContactForm } from "@/components/ContactForm";
+import { transitionTypesFor } from "@/lib/book";
 import { siteConfig } from "@/lib/site-config";
 
 export const metadata: Metadata = {
@@ -39,6 +41,15 @@ export default function ContactPage() {
           <div className="mt-4 spread:mt-6">
             <ContactForm />
           </div>
+          <p className="mt-10 text-right">
+            <Link
+              href="/end"
+              transitionTypes={transitionTypesFor("/contact", "/end")}
+              className="text-sm font-medium text-stone-500 hover:text-forest"
+            >
+              Turn the page →
+            </Link>
+          </p>
         </>
       }
     />
