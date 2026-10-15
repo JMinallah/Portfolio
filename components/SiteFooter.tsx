@@ -70,12 +70,6 @@ export function SiteFooter() {
         </ul>
       </div>
 
-      <p className="pb-6 text-center text-xs text-forest/55">
-        © {year} {siteConfig.name} ·{" "}
-        <Link href={`mailto:${siteConfig.email}`} className="hover:text-forest hover:underline">
-          {siteConfig.email}
-        </Link>
-      </p>
     </footer>
   );
 }
