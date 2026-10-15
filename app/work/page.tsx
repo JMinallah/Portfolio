@@ -6,7 +6,8 @@ import { ProjectList } from "@/components/ProjectList";
 
 export const metadata: Metadata = {
   title: "Work",
-  description: "Selected projects and case studies.",
+  description:
+    "Case studies of Velora, FlowBoard, Yosync, ScaleUp Build and Rydr: an AI agent, two Shopify apps, a company website and a prize winning hackathon app.",
   alternates: {
     canonical: "/work",
   },

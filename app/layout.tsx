@@ -47,6 +47,7 @@ export const metadata: Metadata = {
     ],
   },
   twitter: {
+    creator: "@JoviaMinallah",
     card: "summary_large_image",
     title: siteConfig.name,
     description: siteConfig.description,
@@ -64,6 +65,10 @@ export const metadata: Metadata = {
     },
   },
   category: "technology",
+  // Google Search Console's HTML tag code, set in the hosting environment.
+  verification: process.env.GOOGLE_SITE_VERIFICATION
+    ? { google: process.env.GOOGLE_SITE_VERIFICATION }
+    : undefined,
 };
 
 export default function RootLayout({

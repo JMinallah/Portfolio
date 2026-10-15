@@ -7,7 +7,8 @@ import { absoluteUrl, siteConfig } from "@/lib/site-config";
 import portrait from "@/public/images/mypic.png";
 
 export const metadata: Metadata = {
-  title: "Home",
+  // The most important words in a search result: who, and what.
+  title: { absolute: `${siteConfig.name} · Full stack developer in Kampala` },
   description: siteConfig.description,
   alternates: {
     canonical: "/",
@@ -20,11 +21,6 @@ const websiteJsonLd = {
   name: siteConfig.name,
   url: siteConfig.url,
   description: siteConfig.description,
-  potentialAction: {
-    "@type": "SearchAction",
-    target: `${absoluteUrl("/")}?q={search_term_string}`,
-    "query-input": "required name=search_term_string",
-  },
 };
 
 const personJsonLd = {

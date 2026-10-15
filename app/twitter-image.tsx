@@ -1,46 +1,9 @@
-import { ImageResponse } from "next/og";
-import { siteConfig } from "@/lib/site-config";
+import { previewAlt, previewSize, renderPreviewJpeg } from "@/lib/og-card";
 
-export const size = {
-  width: 1200,
-  height: 630,
-};
-
-export const contentType = "image/png";
-export const alt = `${siteConfig.name} Twitter image`;
+export const size = previewSize;
+export const contentType = "image/jpeg";
+export const alt = previewAlt;
 
 export default function Image() {
-  return new ImageResponse(
-    (
-      <div
-        style={{
-          alignItems: "center",
-          background: "rgb(16, 44, 38)",
-          color: "white",
-          display: "flex",
-          flexDirection: "column",
-          height: "100%",
-          justifyContent: "center",
-          padding: "72px",
-          width: "100%",
-        }}
-      >
-        <div style={{ fontSize: 52, fontWeight: 700, letterSpacing: -1 }}>
-          {siteConfig.name}
-        </div>
-        <div
-          style={{
-            fontSize: 28,
-            marginTop: "18px",
-            maxWidth: "920px",
-            opacity: 0.9,
-            textAlign: "center",
-          }}
-        >
-          Built for SEO, AEO, and GEO performance.
-        </div>
-      </div>
-    ),
-    size,
-  );
+  return renderPreviewJpeg();
 }

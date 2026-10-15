@@ -14,12 +14,13 @@ import {
   skillIndex,
   type IndexEntry,
 } from "@/lib/portfolio-data";
-import { siteConfig } from "@/lib/site-config";
+import { absoluteUrl, siteConfig } from "@/lib/site-config";
 import portrait from "@/public/images/mypic.png";
 
 export const metadata: Metadata = {
   title: "About",
-  description: "Background, experience, skills and the way I work.",
+  description:
+    "Jovia Minallah Matata is a full stack developer in Kampala, Uganda, studying Software Engineering at Makerere University. Experience, skills and the projects behind them.",
   alternates: {
     canonical: "/about",
   },
@@ -77,6 +78,28 @@ function IndexReferences({ entry }: { entry: IndexEntry }) {
   );
 }
 
+const profileJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "ProfilePage",
+  url: absoluteUrl("/about"),
+  mainEntity: {
+    "@type": "Person",
+    name: siteConfig.name,
+    url: siteConfig.url,
+    image: absoluteUrl("/images/mypic.png"),
+    jobTitle: "Full stack developer",
+    description: aboutBio[0],
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: siteConfig.location.city,
+      addressCountry: siteConfig.location.countryCode,
+    },
+    alumniOf: { "@type": "CollegeOrUniversity", name: education.institution },
+    knowsAbout: skillIndex.map((entry) => entry.term),
+    sameAs: siteConfig.socials.map((social) => social.href),
+  },
+};
+
 export default function AboutPage() {
   const cv = cvHref();
 
@@ -84,6 +107,10 @@ export default function AboutPage() {
     <BookPage
       left={
         <>
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(profileJsonLd) }}
+          />
           <h1 className={sectionLabel}>About the author</h1>
 
           <blockquote className="rise ml-auto mt-6 max-w-xs text-right" style={rise(0)}>

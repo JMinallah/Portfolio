@@ -6,7 +6,7 @@ import { ViewTransition } from "react";
 import { BookPage } from "@/components/BookPage";
 import { ProjectList } from "@/components/ProjectList";
 import { ProjectStatus } from "@/components/ProjectStatus";
-import { absoluteUrl } from "@/lib/site-config";
+import { absoluteUrl, siteConfig } from "@/lib/site-config";
 import {
   chapterNumber,
   featuredProjects,
@@ -90,12 +90,30 @@ export default async function CaseStudyPage({ params }: WorkPageProps) {
   const next = featuredProjects[index + 1];
   const numeral = chapterNumber(project.slug);
 
+  const projectJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "CreativeWork",
+    name: project.title,
+    headline: project.title,
+    description: project.summary,
+    url: absoluteUrl(`/work/${project.slug}`),
+    image: absoluteUrl(project.screenshots[0].src.src),
+    creativeWorkStatus: project.status,
+    keywords: project.stack.join(", "),
+    author: { "@type": "Person", name: siteConfig.name, url: siteConfig.url },
+    ...(project.links[0] ? { sameAs: project.links.map((link) => link.href) } : {}),
+  };
+
   return (
     <BookPage
       single="right"
       left={<ProjectList activeSlug={project.slug} />}
       right={
         <article>
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(projectJsonLd) }}
+          />
           <Link
             href="/work"
             transitionTypes={["close-project"]}
