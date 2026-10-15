@@ -98,6 +98,14 @@ body::before {
 .book > .leaf::-webkit-scrollbar {
   display: none;
 }
+/* After each page turn, Next.js moves focus to the new page so screen
+   readers announce it; when the page scrolls, that lands on the paper itself.
+   The paper isn't a control, so it gets no focus ring (everything inside it
+   keeps its own). */
+.book:focus,
+.book > .leaf:focus {
+  outline: none;
+}
 .book[data-single="left"] > .leaf-right,
 .book[data-single="right"] > .leaf-left {
   display: none;
