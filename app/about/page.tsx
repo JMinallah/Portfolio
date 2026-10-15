@@ -107,7 +107,7 @@ export default function AboutPage() {
                 {siteConfig.name}
               </p>
               <p className="mt-1 text-sm text-stone-600">
-                Full-stack developer · {siteConfig.location.city},{" "}
+                Full stack developer · {siteConfig.location.city},{" "}
                 {siteConfig.location.country}
               </p>
               <p className="mt-0.5 text-sm text-stone-500">
@@ -156,7 +156,7 @@ export default function AboutPage() {
                   className="grid grid-cols-[5.5rem_minmax(0,1fr)] gap-x-4"
                 >
                   <p className="pt-0.5 font-serif text-sm text-stone-500">
-                    {job.period ?? "—"}
+                    {job.period}
                   </p>
                   <div>
                     <h3 className="text-base font-semibold leading-snug text-forest">

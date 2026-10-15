@@ -23,16 +23,11 @@ export function SiteHeader() {
       </Link>
 
       <nav aria-label="Main" className="mt-4">
-        <ul className="flex items-center justify-center gap-3 text-sm sm:gap-4">
+        <ul className="flex items-center justify-center gap-5 text-sm sm:gap-7">
           {tabs.map((tab, i) => {
             const isActive = current === i;
             return (
-              <li key={tab.href} className="flex items-center gap-3 sm:gap-4">
-                {i > 0 ? (
-                  <span aria-hidden="true" className="text-paper/40">
-                    ·
-                  </span>
-                ) : null}
+              <li key={tab.href}>
                 <Link
                   href={tab.href}
                   transitionTypes={transitionTypesFor(pathname, tab.href)}

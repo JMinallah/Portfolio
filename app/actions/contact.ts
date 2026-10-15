@@ -6,6 +6,8 @@ import { siteConfig } from "@/lib/site-config";
 export type ContactFormState = {
   status: "idle" | "success" | "error";
   message: string;
+  /** On success: the address the reply will go to. */
+  replyTo?: string;
 };
 
 export async function submitContactForm(
@@ -14,7 +16,7 @@ export async function submitContactForm(
 ): Promise<ContactFormState> {
   // Honeypot: real users never fill this in; bots usually do.
   if (String(formData.get("company") ?? "").trim() !== "") {
-    return { status: "success", message: "Thanks for reaching out!" };
+    return { status: "success", message: "Your letter is on its way." };
   }
 
   const name = String(formData.get("name") ?? "").trim();
@@ -33,31 +35,37 @@ export async function submitContactForm(
   const apiKey = process.env.RESEND_API_KEY;
   if (!apiKey) {
     console.error(
-      "RESEND_API_KEY is not set — cannot send contact form email. See .env.local.example."
+      "RESEND_API_KEY is not set, so the contact form can't send. See .env.example."
     );
     return {
       status: "error",
-      message:
-        "Contact form isn't configured yet (missing RESEND_API_KEY). Please email directly instead.",
+      message: `The form isn't working right now. Please email me at ${siteConfig.email} instead.`,
     };
   }
 
   try {
     const resend = new Resend(apiKey);
-    await resend.emails.send({
-      from: "Portfolio Contact Form <onboarding@resend.dev>",
+    // Resend reports delivery problems (bad key, daily limit, unverified
+    // recipient) in `error` rather than by throwing.
+    const { error } = await resend.emails.send({
+      from: "Portfolio <onboarding@resend.dev>",
       to: siteConfig.email,
       replyTo: email,
-      subject: `New message from ${name}`,
+      subject: `A letter from ${name}`,
       text: `From: ${name} <${email}>\n\n${message}`,
     });
+    if (error) throw error;
 
-    return { status: "success", message: "Thanks — I'll get back to you soon." };
+    return {
+      status: "success",
+      message: "Your letter is on its way.",
+      replyTo: email,
+    };
   } catch (error) {
     console.error("Failed to send contact form email:", error);
     return {
       status: "error",
-      message: "Something went wrong sending your message. Please try again.",
+      message: `Your letter couldn't be sent. Please try again, or email me at ${siteConfig.email}.`,
     };
   }
 }

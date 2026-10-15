@@ -352,6 +352,110 @@ body::before {
   }
 }
 
+/* ---------- Contact: the letter ---------- */
+
+.letter-paper {
+  padding: 1.5rem 1.5rem 1.25rem;
+  border-radius: 3px;
+  background: #fffdf8;
+  box-shadow:
+    0 0 0 1px rgb(16 44 38 / 0.08),
+    0 14px 30px -18px rgb(16 44 38 / 0.5);
+  transform-origin: top center;
+}
+@media (min-width: 640px) {
+  .letter-paper {
+    padding: 2rem 2rem 1.5rem;
+  }
+}
+
+/* The message is written on faint ruled lines that scroll with the text. */
+.letter-lines {
+  min-height: 12rem;
+  line-height: 2rem;
+  background-image: linear-gradient(
+    to bottom,
+    transparent calc(2rem - 1px),
+    rgb(16 44 38 / 0.14) calc(2rem - 1px)
+  );
+  background-size: 100% 2rem;
+  background-attachment: local;
+}
+
+/* "From" and "Reply to", signed on a dotted line. */
+.letter-field {
+  display: grid;
+  gap: 0.15rem;
+}
+.letter-field > span {
+  font-family: var(--font-serif);
+  font-size: 0.8rem;
+  font-style: italic;
+  color: rgb(16 44 38 / 0.7);
+}
+.letter-field > input {
+  border-bottom: 1px dotted rgb(16 44 38 / 0.35);
+  background: transparent;
+  padding: 0.25rem 0;
+  color: var(--color-forest);
+  outline: none;
+  transition: border-color 200ms;
+}
+.letter-field > input:focus {
+  border-bottom-style: solid;
+  border-bottom-color: var(--color-forest);
+}
+.letter-field > input::placeholder,
+.letter-lines::placeholder {
+  color: rgb(16 44 38 / 0.35);
+}
+
+/* Once sent, the letter folds in thirds and slips away... */
+.letter-fold {
+  pointer-events: none;
+  animation: letter-fold 900ms cubic-bezier(0.5, 0, 0.3, 1) forwards;
+}
+@keyframes letter-fold {
+  35% {
+    transform: perspective(900px) rotateX(55deg) scaleY(0.7);
+  }
+  65% {
+    opacity: 1;
+    transform: perspective(900px) rotateX(0deg) scale(0.85, 0.33);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-1.5rem) scale(0.5, 0.25);
+  }
+}
+/* ...and the confirmation, with its envelope, settles in. */
+.letter-sent {
+  animation: rise 600ms cubic-bezier(0.2, 0.8, 0.2, 1) 700ms both;
+}
+.envelope {
+  display: block;
+  width: 5rem;
+  height: 3.25rem;
+  border: 1.5px solid rgb(16 44 38 / 0.45);
+  border-radius: 3px;
+  background:
+    linear-gradient(
+        to bottom right,
+        transparent calc(50% - 1px),
+        rgb(16 44 38 / 0.45) 50%,
+        transparent calc(50% + 1px)
+      )
+      left top / 50% 70% no-repeat,
+    linear-gradient(
+        to bottom left,
+        transparent calc(50% - 1px),
+        rgb(16 44 38 / 0.45) 50%,
+        transparent calc(50% + 1px)
+      )
+      right top / 50% 70% no-repeat,
+    #fffdf8;
+}
+
 /* ---------- Covers ---------- */
 
 /* Cream linen bookcloth: a faint weave, a soft sheen, and a darker band
@@ -423,6 +527,13 @@ body::before {
   outline-offset: -7px;
 }
 
+/* The cover portrait is as tall as the cover allows: everything else on the
+   cover needs roughly 700px of the screen's height. */
+.cover-photo img {
+  width: auto;
+  height: clamp(8rem, calc(100dvh - 690px), 16rem);
+}
+
 .cover-label {
   font-size: 0.6875rem;
   font-weight: 600;
@@ -459,10 +570,8 @@ body::before {
   .cover-frame > .cover-label {
     margin-top: 0;
   }
-  .cover-frame > .cover-photo {
-    width: 5rem;
-    height: 5rem;
-    font-size: 1.5rem;
+  .cover-frame > .cover-photo img {
+    height: clamp(4.5rem, calc(100dvh - 530px), 10rem);
   }
   .cover-frame > .cover-extra {
     display: none;
@@ -728,8 +837,13 @@ html:active-view-transition-type(cover) {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .rise {
+  .rise,
+  .letter-sent {
     animation: none;
+  }
+  .letter-fold {
+    animation: none;
+    visibility: hidden;
   }
   .deck-card {
     transition: none;

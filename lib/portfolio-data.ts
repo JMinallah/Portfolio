@@ -45,7 +45,7 @@ export const featuredProjects: Project[] = [
       "An AI agent that plans big life changes, like moving abroad or starting university, as missions with tasks, deadlines and documents.",
     status: "In progress",
     team: "Solo",
-    role: "Everything: product, design, full-stack and the AI agent",
+    role: "Everything: product, design, full stack development and the AI agent",
     stack: ["Next.js", "TypeScript", "MongoDB", "Auth.js", "Gemini", "Tailwind CSS", "Playwright"],
     links: [],
     screenshots: [
@@ -63,7 +63,7 @@ export const featuredProjects: Project[] = [
     problem:
       "Moving abroad, changing careers or starting university means dozens of linked tasks, deadlines and documents, usually scattered across notes, emails and spreadsheets. Velora started as a hackathon build. Its AI agent ran on an external cloud service, and when the credits ran out, the agent was lost with them.",
     work: [
-      "Rebuilt Velora from the ground up with the agent running inside the app, under version control, on free-tier infrastructure (Vercel, MongoDB Atlas and Cloudflare R2).",
+      "Rebuilt Velora from the ground up with the agent running inside the app, under version control, on free tier infrastructure (Vercel, MongoDB Atlas and Cloudflare R2).",
       "Designed it to be trusted: the agent can only change things through typed tools, risky actions need the user's confirmation, and every change is recorded and can be undone.",
       "Locked down the API: requests without a session are refused, and requests for someone else's data get a plain \"not found\".",
       "Made every feature work with the AI switched off, and wrote browser tests that prove it.",
@@ -76,10 +76,10 @@ export const featuredProjects: Project[] = [
     slug: "flowboard",
     title: "FlowBoard",
     summary:
-      "A Shopify app that turns a store's orders into a drag-and-drop board, with the team's own stages, right inside the Shopify admin.",
+      "A Shopify app that turns a store's orders into a drag and drop board, with the team's own stages, right inside the Shopify admin.",
     status: "In review",
     team: "Solo",
-    role: "Everything: design, full-stack development and the App Store submission",
+    role: "Everything: design, full stack development and the App Store submission",
     stack: ["React Router", "TypeScript", "Shopify App Bridge", "Prisma", "PostgreSQL", "dnd-kit"],
     links: [],
     screenshots: [
@@ -97,10 +97,10 @@ export const featuredProjects: Project[] = [
     problem:
       "Shopify's order list is just a list. Small teams that pack, make or customise orders end up tracking who is doing what, and what stage each order is at, in spreadsheets or group chats.",
     work: [
-      "Built a drag-and-drop board with the merchant's own stages, plus table and calendar views.",
+      "Built a drag and drop board with the merchant's own stages, plus table and calendar views.",
       "Gave every order its own page with notes, checklists, comments, due dates and custom fields, and added a team roster.",
       "Added automations that move orders between stages, a Shopify Flow trigger, CSV export, and a panel and bulk action inside Shopify's own order pages.",
-      "Set up billing through Shopify: Basic and Pro plans, each with a 14-day free trial.",
+      "Set up billing through Shopify: Basic and Pro plans, each with a free 14 day trial.",
       "Prepared it for App Store review: an access log for customer data, nightly encrypted database backups, privacy policies and an incident log.",
     ],
     result: "Submitted to the Shopify App Store and currently in review.",
@@ -112,7 +112,7 @@ export const featuredProjects: Project[] = [
       "A Shopify app that keeps a store's orders and products in sync with Notion, with no CSV exports or scripts.",
     status: "Reworking",
     team: "Solo",
-    role: "Everything: design, full-stack development and the App Store listing",
+    role: "Everything: design, full stack development and the App Store listing",
     stack: ["TypeScript", "Node.js", "Express", "PostgreSQL", "Shopify API", "Notion API"],
     links: [],
     screenshots: [
@@ -130,11 +130,11 @@ export const featuredProjects: Project[] = [
     problem:
       "Merchants who run their business from Notion copy orders and products over by hand or with CSV exports, which are out of date the moment they're made.",
     work: [
-      "Built both sign-in flows, for Shopify and for Notion, and a sync engine that combines real-time webhooks with a 15-minute scheduler.",
-      "Found and closed a real security hole: the Notion connection step didn't check who was asking, so anyone who knew a store's address could take over its Notion connection. Fixed with session checks and a signed sign-in state.",
+      "Built both login flows, for Shopify and for Notion, and a sync engine that combines real time webhooks with a scheduler that runs every 15 minutes.",
+      "Found and closed a real security hole: the Notion connection step didn't check who was asking, so anyone who knew a store's address could take over its Notion connection. Fixed with session checks and a signed login state.",
       "Fixed silent data loss: syncs only fetched the first 100 records, so busy stores could lose changes. Added proper paging, and a retry so a capped run tries again instead of skipping records.",
       "Stopped one failing request from crashing the server for every store by handling errors in every route.",
-      "Added billing through Shopify ($19 a month after a 14-day trial) and wrote the App Store listing.",
+      "Added billing through Shopify ($19 a month after a 14 day trial) and wrote the App Store listing.",
     ],
     result:
       "I'm now reworking Yosync as a custom app, installed directly for individual stores.",
@@ -143,7 +143,7 @@ export const featuredProjects: Project[] = [
     slug: "scaleup",
     title: "ScaleUp Build",
     summary:
-      "The website for ScaleUp Build, a technology company helping early-stage startups and founders grow, with an application form and product waitlist.",
+      "The website for ScaleUp Build, a technology company helping early stage startups and founders grow, with an application form and product waitlist.",
     status: "Live",
     team: "Team",
     role: "Frontend developer in a team of four",
@@ -162,8 +162,8 @@ export const featuredProjects: Project[] = [
       "ScaleUp Build needed a site that explains what the company does and lets founders apply to join, sign up for product launches and read about the team.",
     work: [
       "Set up the front end with Tailwind CSS and built the core pages: home, about, products, team, testimonials, FAQ and contact.",
-      "Built the application form with validation, clear error messages, a thank-you screen and a redirect once it's sent.",
-      "Connected the site to the backend API for waitlist sign-ups and notifications, with proper error handling.",
+      "Built the application form with validation, clear error messages, a thank you screen and a redirect once it's sent.",
+      "Connected the site to the backend API for waitlist signups and notifications, with proper error handling.",
       "Kept the layout responsive and consistent across pages, and kept team and content details up to date as the company grew.",
     ],
     result:
@@ -173,7 +173,7 @@ export const featuredProjects: Project[] = [
     slug: "rydr",
     title: "Rydr",
     summary:
-      "Peer-to-peer ride-sharing on Polkadot, where payment sits in a smart-contract escrow until the ride is done. Built for a Polkadot hackathon, where it won a prize.",
+      "Peer to peer ride sharing on Polkadot, where payment sits in a smart contract escrow until the ride is done. Built for a Polkadot hackathon, where it won a prize.",
     status: "Live",
     award: "Prize winner",
     team: "Team",
@@ -190,11 +190,11 @@ export const featuredProjects: Project[] = [
       },
     ],
     problem:
-      "Ride-sharing platforms take a cut and hold the money in between. Rydr explores trustless rides: driver and passenger pay each other directly, with a smart contract holding the fare until the ride is complete.",
+      "Ride sharing platforms take a cut and hold the money in between. Rydr explores trustless rides: driver and passenger pay each other directly, with a smart contract holding the fare until the ride is complete.",
     work: [
       "Set up the React project, its colours and routing.",
       "Built Find a Ride: search, a map with the rider's location, filters, and available rides loaded from the database.",
-      "Built the step-by-step Offer a Ride flow with validation and illustrations, and the payment step.",
+      "Built the step by step Offer a Ride flow with validation and illustrations, and the payment step.",
       "Added the mobile menu, error handling across the app, and the Vercel deployment.",
     ],
     result:
@@ -219,7 +219,7 @@ export type OtherProject = {
 export const otherProjects: OtherProject[] = [
   {
     title: "Whistling Acacia Guesthouse",
-    line: "A concept site showing small Kampala guesthouses how a fast, mobile-first page turns visitors into WhatsApp enquiries.",
+    line: "A concept site showing small Kampala guesthouses how a fast, mobile first page turns visitors into WhatsApp enquiries.",
     href: "https://whistling-acacia-demo.vercel.app",
   },
   {
@@ -229,7 +229,7 @@ export const otherProjects: OtherProject[] = [
   },
   {
     title: "Nagly",
-    line: "A voice-first Android task manager that nags you, gently or not, about overdue tasks. Kotlin and Jetpack Compose.",
+    line: "A voice first Android task manager that nags you, gently or not, about overdue tasks. Kotlin and Jetpack Compose.",
   },
   {
     title: "Stepsy",
@@ -248,8 +248,8 @@ export const otherProjects: OtherProject[] = [
 ];
 
 export const aboutBio = [
-  "I'm Jovia, a full-stack developer based in Kampala, Uganda. I build fast, accessible web apps that solve real problems for real people, from Shopify apps that run a store's orders to an AI agent that helps people plan big life changes.",
-  "I enjoy modern JavaScript on the front end and well-documented APIs on the back end, and I care about code quality, security and shipping things people actually enjoy using.",
+  "I'm Jovia, a full stack developer based in Kampala, Uganda. I build fast, accessible web apps that solve real problems for real people, from Shopify apps that run a store's orders to an AI agent that helps people plan big life changes.",
+  "I enjoy modern JavaScript on the front end and well documented APIs on the back end, and I care about code quality, security and shipping things people actually enjoy using.",
   "Outside of development, I explore design trends, read productivity books and work on my communication skills. When it's time to recharge, you'll probably find me laughing at anything with humour, or watching anime and pretending it's purely for narrative research.",
 ];
 
@@ -266,7 +266,7 @@ export const experience: Experience[] = [
     role: "Frontend Developer",
     organisation: "ScaleUp Build",
     kind: "Volunteer",
-    period: "2026 – present",
+    period: "Since 2026",
     description:
       "Building the company website with the design team: accessible, responsive pages, the founder application form and the product waitlist.",
   },
@@ -274,7 +274,7 @@ export const experience: Experience[] = [
     role: "Frontend Engineering Intern",
     organisation: "True Minds Innovation",
     kind: "Internship",
-    period: "Feb – Apr 2026",
+    period: "Feb to Apr 2026",
     description:
       "A frontend engineering internship building React interfaces, completed with a certificate.",
   },
@@ -294,7 +294,7 @@ export const education = {
 };
 
 export const epigraph =
-  "Good software is like a well-made book: you never notice the binding, only the story.";
+  "Good software is like a well made book: you never notice the binding, only the story.";
 
 export type IndexEntry = {
   term: string;
