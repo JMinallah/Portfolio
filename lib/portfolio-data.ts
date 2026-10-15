@@ -293,65 +293,60 @@ export const education = {
   year: "Third year",
 };
 
-export type SkillGroup = {
-  title: string;
-  skills: string[];
+export const epigraph =
+  "Good software is like a well-made book: you never notice the binding, only the story.";
+
+export type IndexEntry = {
+  term: string;
+  /** Chapters (featured project slugs) where this skill was used. */
+  chapters?: string[];
+  /** Smaller projects, without their own chapter, that used it. */
+  also?: string[];
 };
 
-export const skillGroups: SkillGroup[] = [
-  {
-    title: "Frontend",
-    skills: ["React", "Next.js", "TypeScript", "JavaScript", "Tailwind CSS", "HTML & CSS"],
-  },
-  {
-    title: "Backend",
-    skills: [
-      "Node.js",
-      "Express",
-      "PHP & Laravel",
-      "REST APIs",
-      "PostgreSQL & Prisma",
-      "MongoDB",
-      "MySQL",
-    ],
-  },
-  {
-    title: "Mobile",
-    skills: ["Kotlin", "Jetpack Compose", "Java"],
-  },
-  {
-    title: "SEO & AEO",
-    skills: [
-      "Technical SEO architecture",
-      "AEO-focused content structuring",
-      "Structured data / JSON-LD",
-      "Core Web Vitals optimization",
-    ],
-  },
-  {
-    title: "AI",
-    skills: [
-      "LLM integration (Gemini, Claude, GPT)",
-      "AI agents and tool calling",
-      "LangChain",
-      "Vector databases",
-      "Prompt engineering",
-      "Machine learning",
-      "Python",
-    ],
-  },
-  {
-    title: "Platforms & tools",
-    skills: [
-      "Shopify apps",
-      "Notion API",
-      "Git & GitHub",
-      "CI/CD (GitHub Actions)",
-      "Docker",
-      "Vitest & Playwright",
-      "Vercel",
-      "Linux",
-      "Figma",
-    ],
-  },
+// The About page's index: every skill, pointing to the chapters that show it
+// in use. Skills without a project behind them are listed on their own.
+// Kept in alphabetical order.
+export const skillIndex: IndexEntry[] = [
+  { term: "AEO content structuring" },
+  { term: "AI agents and tool calling", chapters: ["velora"] },
+  { term: "Appwrite", chapters: ["rydr"] },
+  { term: "Auth.js", chapters: ["velora"] },
+  { term: "CI/CD (GitHub Actions)", chapters: ["velora", "flowboard"] },
+  { term: "Core Web Vitals optimization" },
+  { term: "Docker", chapters: ["yosync"] },
+  { term: "Express", chapters: ["yosync"] },
+  { term: "Figma" },
+  { term: "Git & GitHub" },
+  { term: "HTML & CSS" },
+  { term: "Java" },
+  { term: "JavaScript", chapters: ["scaleup", "rydr"] },
+  { term: "Jetpack Compose", also: ["Nagly"] },
+  { term: "Kotlin", also: ["Nagly"] },
+  { term: "LangChain" },
+  { term: "Linux" },
+  { term: "LLM integration (Gemini, Claude, GPT)", chapters: ["velora"] },
+  { term: "Machine learning" },
+  { term: "Mapbox", chapters: ["rydr"] },
+  { term: "MongoDB", chapters: ["velora"] },
+  { term: "MySQL" },
+  { term: "Next.js", chapters: ["velora"], also: ["Whistling Acacia"] },
+  { term: "Node.js", chapters: ["yosync"] },
+  { term: "Notion API", chapters: ["yosync"] },
+  { term: "PHP & Laravel", also: ["Aion Pharmacy"] },
+  { term: "Polkadot & ethers.js", chapters: ["rydr"] },
+  { term: "PostgreSQL", chapters: ["flowboard", "yosync"] },
+  { term: "Prisma", chapters: ["flowboard"] },
+  { term: "Prompt engineering", chapters: ["velora"] },
+  { term: "Python", also: ["HESFB Navigator"] },
+  { term: "React", chapters: ["flowboard", "scaleup", "rydr"], also: ["Modu"] },
+  { term: "REST APIs", chapters: ["yosync"] },
+  { term: "Shopify apps", chapters: ["flowboard", "yosync"] },
+  { term: "Structured data / JSON-LD" },
+  { term: "Tailwind CSS", chapters: ["velora", "scaleup", "rydr"] },
+  { term: "Technical SEO architecture" },
+  { term: "TypeScript", chapters: ["velora", "flowboard", "yosync"] },
+  { term: "Vector databases" },
+  { term: "Vercel", chapters: ["velora", "rydr"] },
+  { term: "Vitest & Playwright", chapters: ["velora", "yosync"] },
 ];

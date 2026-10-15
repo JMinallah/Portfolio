@@ -62,12 +62,12 @@ export function BookTip() {
         visible ? "opacity-100" : "pointer-events-none opacity-0"
       }`}
     >
-      <p className="flex items-center gap-3 rounded-full bg-paper py-2 pl-4 pr-2 text-sm text-forest shadow-[0_10px_30px_-12px_rgb(0_0_0/0.6)]">
+      <p className="flex max-w-full items-center gap-2 rounded-full bg-paper py-1.5 pl-3.5 pr-1.5 text-xs text-forest sm:gap-3 sm:py-2 sm:pl-4 sm:pr-2 sm:text-sm shadow-[0_10px_30px_-12px_rgb(0_0_0/0.6)]">
         {text}
         <button
           type="button"
           onClick={() => setVisible(false)}
-          className="rounded-full bg-forest px-3 py-1 text-xs font-semibold text-champagne transition hover:brightness-125"
+          className="shrink-0 rounded-full bg-forest px-3 py-1 text-xs font-semibold text-champagne transition hover:brightness-125"
         >
           Got it
         </button>
