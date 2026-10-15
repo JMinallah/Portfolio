@@ -32,9 +32,15 @@ export function BookControls() {
       );
     }
 
+    // Widgets with their own left/right gestures (e.g. the More work deck)
+    // mark themselves so swipes inside them don't turn the page.
+    function hasOwnGestures(target: EventTarget | null) {
+      return target instanceof Element && target.closest("[data-own-gestures]") !== null;
+    }
+
     function onKeyDown(event: KeyboardEvent) {
       if (event.altKey || event.ctrlKey || event.metaKey || event.shiftKey) return;
-      if (isTyping(event.target)) return;
+      if (event.defaultPrevented || isTyping(event.target)) return;
       if (event.key === "ArrowRight") turn(1);
       if (event.key === "ArrowLeft") turn(-1);
     }
@@ -42,7 +48,11 @@ export function BookControls() {
     let start: { x: number; y: number } | null = null;
 
     function onTouchStart(event: TouchEvent) {
-      if (event.touches.length !== 1 || isTyping(event.target)) {
+      if (
+        event.touches.length !== 1 ||
+        isTyping(event.target) ||
+        hasOwnGestures(event.target)
+      ) {
         start = null;
         return;
       }

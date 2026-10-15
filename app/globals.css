@@ -257,6 +257,101 @@ body::before {
   }
 }
 
+/* ---------- Work: plates and chapters ---------- */
+
+/* A screenshot mounted like an illustration plate: a white mat with a thin
+   rule and a soft shadow, as if tipped into the book. */
+.plate-mount {
+  background: #fff;
+  padding: 0.5rem;
+  border-radius: 3px;
+  box-shadow:
+    0 0 0 1px rgb(16 44 38 / 0.08),
+    0 14px 30px -18px rgb(16 44 38 / 0.5);
+}
+
+/* The opening letter of a chapter. */
+.drop-cap::first-letter {
+  float: left;
+  margin: 0.3rem 0.5rem 0 0;
+  font-family: var(--font-serif);
+  font-size: 3.4rem;
+  font-weight: 600;
+  line-height: 0.8;
+  color: var(--color-forest);
+}
+
+/* More work: index cards fanned in 3D. Each card is placed from its
+   distance to the front card: pushed sideways by --step, turned away,
+   shrunk, dimmed, and hidden beyond two. */
+/* Every card shares one grid cell, so the deck is as tall as its tallest
+   card and no description is ever cut short. */
+.deck {
+  --step: 3.25rem;
+  display: grid;
+  perspective: 1200px;
+  overflow-x: clip;
+}
+.deck-card {
+  grid-area: 1 / 1;
+  justify-self: center;
+  display: flex;
+  flex-direction: column;
+  width: 14rem;
+  padding: 1rem 1.1rem 0.9rem;
+  border-radius: 4px;
+  background: #fffdf8;
+  /* A thin rule along the top, as on an index card. */
+  box-shadow:
+    inset 0 3px 0 rgb(180 68 44 / 0.45),
+    0 0 0 1px rgb(16 44 38 / 0.08),
+    0 12px 26px -16px rgb(16 44 38 / 0.5);
+  cursor: pointer;
+  transform: translateX(calc(var(--step) * var(--offset)))
+    rotateY(calc(var(--offset) * -22deg))
+    scale(calc(1 - var(--distance) * 0.1));
+  filter: brightness(calc(1 - min(var(--distance), 1) * 0.06));
+  opacity: clamp(0, calc(3 - var(--distance)), 1);
+  transition:
+    transform 600ms cubic-bezier(0.2, 0.8, 0.2, 1),
+    filter 400ms,
+    opacity 400ms;
+}
+.deck-card.is-active {
+  cursor: default;
+}
+@media (min-width: 640px) {
+  .deck {
+    --step: 4.5rem;
+  }
+  .deck-card {
+    width: 15.5rem;
+  }
+}
+
+/* Chapter pages: text and figures rise into place one after another when a
+   chapter opens. The title is left out (it flies in from the contents). */
+.rise {
+  animation: rise 520ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+  animation-delay: calc(var(--rise, 0) * 70ms);
+}
+@keyframes rise {
+  from {
+    opacity: 0;
+    translate: 0 10px;
+  }
+}
+
+/* The one-time "how to turn pages" tip floats just above the tech strip. */
+.book-tip {
+  bottom: calc(env(safe-area-inset-bottom, 0px) + 5.25rem);
+}
+@media (min-width: 640px) {
+  .book-tip {
+    bottom: calc(env(safe-area-inset-bottom, 0px) + 6.5rem);
+  }
+}
+
 /* ---------- Covers ---------- */
 
 /* Cream linen bookcloth: a faint weave, a soft sheen, and a darker band
@@ -522,14 +617,16 @@ body::before {
 ::view-transition-image-pair(.project-morph) {
   animation-name: via-blur;
 }
+/* The single sheet swaps in one cut while the title flies: fading the old
+   and new sheets at the same time would let the forest floor show through
+   the paper mid-way, which reads as a flash. (On the spread, each page is a
+   pair that cross-fades without going see-through.) */
 ::view-transition-group(.page-reveal) {
   z-index: 2;
 }
-::view-transition-old(.page-hold) {
-  animation: fade-out 140ms ease-in both;
-}
+::view-transition-old(.page-hold),
 ::view-transition-new(.page-reveal) {
-  animation: page-reveal 260ms ease-out 120ms both;
+  animation: none;
 }
 
 @keyframes via-blur {
@@ -631,6 +728,12 @@ html:active-view-transition-type(cover) {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .rise {
+    animation: none;
+  }
+  .deck-card {
+    transition: none;
+  }
   .tech-track {
     animation: none;
     width: auto;
@@ -649,13 +752,11 @@ html:active-view-transition-type(cover) {
     animation-duration: 0s !important;
   }
   ::view-transition-old(.flip-out),
-  ::view-transition-old(.flip-stay),
-  ::view-transition-old(.page-hold) {
+  ::view-transition-old(.flip-stay) {
     animation: fade-out 200ms ease both;
   }
   ::view-transition-new(.flip-in),
-  ::view-transition-new(.flip-under),
-  ::view-transition-new(.page-reveal) {
+  ::view-transition-new(.flip-under) {
     animation: page-reveal 200ms ease both;
   }
   html:active-view-transition-type(flip-forward, flip-back) {

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { IBM_Plex_Sans, IBM_Plex_Serif } from "next/font/google";
 import "./globals.css";
 import { BookControls } from "@/components/BookControls";
+import { BookTip } from "@/components/BookTip";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
 import { siteConfig } from "@/lib/site-config";
@@ -79,6 +80,7 @@ export default function RootLayout({
         </main>
         <SiteFooter />
         <BookControls />
+        <BookTip />
       </body>
     </html>
   );

@@ -32,7 +32,20 @@ export default function BackCoverPage() {
       >
         {siteConfig.email}
       </a>
-      {/* TODO: add social links (GitHub, LinkedIn) here once siteConfig has them */}
+      <ul className="mt-4 flex flex-wrap justify-center gap-x-4 gap-y-1 text-sm">
+        {siteConfig.socials.map((social) => (
+          <li key={social.label}>
+            <a
+              href={social.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-medium text-forest/75 underline-offset-4 hover:text-forest hover:underline"
+            >
+              {social.label}
+            </a>
+          </li>
+        ))}
+      </ul>
 
       <Link
         href="/"

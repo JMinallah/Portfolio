@@ -3,6 +3,7 @@ import Link from "next/link";
 import { BookPage } from "@/components/BookPage";
 import { ContactForm } from "@/components/ContactForm";
 import { transitionTypesFor } from "@/lib/book";
+import { cvHref } from "@/lib/cv";
 import { siteConfig } from "@/lib/site-config";
 
 export const metadata: Metadata = {
@@ -14,6 +15,8 @@ export const metadata: Metadata = {
 };
 
 export default function ContactPage() {
+  const cv = cvHref();
+
   return (
     <BookPage
       left={
@@ -30,6 +33,35 @@ export default function ContactPage() {
           >
             {siteConfig.email}
           </a>
+          <p className="mt-6 text-sm text-stone-500">
+            Based in {siteConfig.location.city}, {siteConfig.location.country}.
+          </p>
+          <ul className="mt-6 divide-y divide-forest/10 border-y border-forest/10">
+            {siteConfig.socials.map((social) => (
+              <li key={social.label}>
+                <a
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group flex items-baseline justify-between gap-4 py-3 text-sm"
+                >
+                  <span className="font-semibold text-forest">{social.label}</span>
+                  <span className="text-stone-500 group-hover:text-forest">
+                    {social.handle} ↗
+                  </span>
+                </a>
+              </li>
+            ))}
+          </ul>
+          {cv ? (
+            <a
+              href={cv}
+              download
+              className="mt-6 inline-block text-sm font-medium text-forest underline-offset-4 hover:underline"
+            >
+              Download my CV ↓
+            </a>
+          ) : null}
         </>
       }
       right={
