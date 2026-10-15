@@ -12,7 +12,7 @@ export function SiteHeader() {
   return (
     <header
       style={{ viewTransitionName: "site-header" }}
-      className="px-4 pb-8 pt-10 text-center sm:pt-14"
+      className="px-4 pb-5 pt-7 text-center sm:pb-8 sm:pt-12"
     >
       <Link
         href="/"
@@ -25,7 +25,7 @@ export function SiteHeader() {
       <nav aria-label="Main" className="mt-4">
         <ul className="flex items-center justify-center gap-3 text-sm sm:gap-4">
           {tabs.map((tab, i) => {
-            const isActive = current === i + 1;
+            const isActive = current === i;
             return (
               <li key={tab.href} className="flex items-center gap-3 sm:gap-4">
                 {i > 0 ? (

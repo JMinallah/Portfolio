@@ -13,24 +13,34 @@ export const metadata: Metadata = {
 
 export default function ContactPage() {
   return (
-    <BookPage>
-      <h1 className="text-sm font-semibold uppercase tracking-widest text-stone-500">
-        Let&apos;s work together
-      </h1>
-      <p className="mt-6 text-base text-stone-600">
-        Have a project in mind? Email me directly:
-      </p>
-      <a
-        href={`mailto:${siteConfig.email}`}
-        className="mt-2 inline-block break-all text-2xl font-semibold tracking-tight text-forest underline-offset-4 hover:underline sm:text-3xl"
-      >
-        {siteConfig.email}
-      </a>
-
-      <p className="mt-10 text-sm text-stone-500">Or send a message here.</p>
-      <div className="mt-4">
-        <ContactForm />
-      </div>
-    </BookPage>
+    <BookPage
+      left={
+        <>
+          <h1 className="text-sm font-semibold uppercase tracking-widest text-stone-500">
+            Let&apos;s work together
+          </h1>
+          <p className="mt-6 text-base text-stone-600">
+            Have a project in mind? Email me directly:
+          </p>
+          <a
+            href={`mailto:${siteConfig.email}`}
+            className="mt-2 inline-block break-all text-2xl font-semibold tracking-tight text-forest underline-offset-4 hover:underline sm:text-3xl"
+          >
+            {siteConfig.email}
+          </a>
+        </>
+      }
+      right={
+        <>
+          <h2 className="text-sm text-stone-500 spread:font-semibold spread:uppercase spread:tracking-widest">
+            <span className="spread:hidden">Or send a message here.</span>
+            <span className="hidden spread:inline">Send a message</span>
+          </h2>
+          <div className="mt-4 spread:mt-6">
+            <ContactForm />
+          </div>
+        </>
+      }
+    />
   );
 }

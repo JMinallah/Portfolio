@@ -1,5 +1,8 @@
 @import "tailwindcss";
 
+/* Two-page spread. Keep in sync with the media queries below. */
+@custom-variant spread (@media (min-width: 1200px));
+
 @theme {
   --color-forest: #102c26;
   --color-champagne: #f7e7ce;
@@ -14,6 +17,7 @@ html {
   --background: var(--color-champagne);
   --foreground: var(--color-forest);
   --page-turn: 560ms;
+  --leaf-turn: 320ms;
 }
 
 @layer base {
@@ -31,27 +35,200 @@ body {
     sans-serif;
 }
 
-/* ---------- Book page ---------- */
+/* ---------- Book ---------- */
 
-.book-page {
-  position: relative;
-  background: var(--color-paper);
+/* Narrow screens: one sheet, with both halves stacked on it. */
+.book {
+  --spine-shade: rgb(16 44 38 / 0.08);
+  --paper-shadow:
+    0 1px 2px rgb(16 44 38 / 0.06), 0 18px 40px -20px rgb(16 44 38 / 0.25);
+  --pad-y: 2.5rem;
+  --pad-x: 1.5rem;
+  --fade: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  min-height: 26rem;
+  padding: var(--pad-y) var(--pad-x);
   border-radius: 0.375rem 1.25rem 1.25rem 0.375rem;
-  box-shadow:
-    0 1px 2px rgb(16 44 38 / 0.06),
-    0 18px 40px -20px rgb(16 44 38 / 0.25);
+  /* Soft shading along the left edge, where the page meets the spine. */
+  background:
+    linear-gradient(to right, var(--spine-shade), transparent 1.25rem),
+    var(--color-paper);
+  box-shadow: var(--paper-shadow);
+  /* The native scrollbar clashes with the paper's rounded edge and the
+     spine; the edge fades and the "More" hint show there is more instead. */
+  scrollbar-width: none;
+}
+.book::-webkit-scrollbar,
+.book > .leaf::-webkit-scrollbar {
+  display: none;
+}
+.book[data-single="left"] > .leaf-right,
+.book[data-single="right"] > .leaf-left {
+  display: none;
+}
+.book:not([data-single]) > .leaf-right {
+  margin-top: 2.5rem;
+}
+.book[data-centered] {
+  justify-content: safe center;
 }
 
-/* Soft shading along the left edge, where a page meets the spine. */
-.book-page::before {
-  content: "";
-  position: absolute;
-  inset-block: 0;
-  left: 0;
-  width: 1.25rem;
-  border-radius: inherit;
-  background: linear-gradient(to right, rgb(16 44 38 / 0.08), transparent);
-  pointer-events: none;
+@media (min-width: 640px) {
+  .book {
+    --pad-y: 3.5rem;
+    --pad-x: 3rem;
+  }
+}
+
+/* Whenever the screen is tall enough, the book sits fully inside it, with a
+   margin on every side, between the header and the tech strip. Long pages
+   scroll inside the paper instead of the window. */
+@media (min-height: 520px) {
+  body {
+    height: 100dvh;
+    overflow: hidden;
+  }
+  .book-main {
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+  }
+  .book {
+    flex: 1;
+    min-height: 0;
+    overflow-y: auto;
+  }
+
+  /* Paper-coloured fades at the top and bottom edges of a scrolling page:
+     content fades out instead of being cut at the edge, and the bottom fade
+     hints that there is more below. Each sits in the padding when the page
+     is scrolled to that end, so it is invisible there. */
+  .book::before,
+  .book::after,
+  .book > .leaf::before,
+  .book > .leaf::after {
+    content: "";
+    position: sticky;
+    z-index: 1;
+    display: block;
+    flex: none;
+    height: var(--fade);
+    margin-inline: calc(-1 * var(--pad-x));
+    background: inherit;
+    pointer-events: none;
+  }
+  .book::before,
+  .book > .leaf::before {
+    /* Sticky offsets are measured from inside the padding; pull them out to
+       the paper's edge. */
+    top: calc(-1 * var(--pad-y));
+    margin-top: calc(-1 * var(--fade));
+    mask-image: linear-gradient(to bottom, #000, transparent);
+  }
+  .book::after,
+  .book > .leaf::after {
+    bottom: calc(-1 * var(--pad-y));
+    margin-bottom: calc(-1 * var(--fade));
+    /* Solid along the bottom so the label sits on clean paper. */
+    mask-image: linear-gradient(to top, #000 55%, transparent);
+    /* "More ↓" label, shown only while there is more below (see --more). */
+    content: "More \2193";
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding-bottom: 0.5rem;
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgb(16 44 38 / calc(var(--more) * 0.55));
+  }
+  /* Only the scrolling element gets fades: the sheet on narrow screens, each
+     leaf on the spread. */
+  .book > .leaf::before,
+  .book > .leaf::after {
+    content: none;
+  }
+}
+
+/* Wide screens: the book opens into a two-page spread. */
+@media (min-width: 1200px) {
+  .book {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: minmax(0, 1fr);
+    gap: 0;
+    padding: 0;
+    border-radius: 0;
+    background: none;
+    box-shadow: none;
+    overflow: visible;
+  }
+  .book::before,
+  .book::after {
+    content: none;
+  }
+  .book:not([data-single]) > .leaf-right {
+    margin-top: 0;
+  }
+  .book > .leaf,
+  .book[data-single] > .leaf {
+    --pad-x: 3.5rem;
+    display: block;
+    min-height: 26rem;
+    padding: var(--pad-y);
+    overflow-y: auto;
+    box-shadow: var(--paper-shadow);
+    scrollbar-width: none;
+  }
+  .book > .leaf::before {
+    content: "";
+  }
+  .book > .leaf::after {
+    content: "More \2193";
+  }
+  .book[data-centered] > .leaf {
+    display: flex;
+    flex-direction: column;
+    justify-content: safe center;
+  }
+  .leaf-left {
+    view-transition-name: leaf-left;
+    border-radius: 1.25rem 0.25rem 0.25rem 1.25rem;
+    background:
+      linear-gradient(to left, var(--spine-shade), transparent 2rem),
+      var(--color-paper);
+  }
+  .leaf-right {
+    view-transition-name: leaf-right;
+    border-radius: 0.25rem 1.25rem 1.25rem 0.25rem;
+    background:
+      linear-gradient(to right, var(--spine-shade), transparent 2rem),
+      var(--color-paper);
+  }
+}
+
+@property --more {
+  syntax: "<number>";
+  inherits: false;
+  initial-value: 0;
+}
+@keyframes more-below {
+  0%,
+  85% {
+    --more: 1;
+  }
+  100% {
+    --more: 0;
+  }
+}
+@supports (animation-timeline: scroll()) {
+  .book::after,
+  .book > .leaf::after {
+    animation: more-below linear both;
+    animation-timeline: scroll(nearest);
+  }
 }
 
 /* ---------- Tech strip ---------- */
@@ -159,6 +336,7 @@ body {
 
 /* Opening a project: its title grows into the case study heading. */
 ::view-transition-group(.project-morph) {
+  z-index: 3;
   animation-duration: 420ms;
   animation-timing-function: cubic-bezier(0.2, 0.8, 0.2, 1);
 }
@@ -191,6 +369,77 @@ body {
   }
 }
 
+/* Spread: a turn lifts one leaf off the spine until it is edge-on, then
+   lands the new leaf on the other side, like a real page. */
+::view-transition-group(leaf-left),
+::view-transition-group(leaf-right) {
+  animation: none;
+}
+::view-transition-old(leaf-left),
+::view-transition-new(leaf-left),
+::view-transition-old(leaf-right),
+::view-transition-new(leaf-right) {
+  mix-blend-mode: normal;
+}
+
+html:active-view-transition-type(flip-forward, flip-back) {
+  &::view-transition-old(leaf-left),
+  &::view-transition-new(leaf-left),
+  &::view-transition-old(leaf-right),
+  &::view-transition-new(leaf-right) {
+    animation: none;
+  }
+}
+
+html:active-view-transition-type(flip-forward) {
+  &::view-transition-old(leaf-right) {
+    z-index: 1;
+    transform-origin: left center;
+    animation: leaf-lift-right var(--leaf-turn) ease-in both;
+  }
+  &::view-transition-new(leaf-left) {
+    z-index: 1;
+    transform-origin: right center;
+    animation: leaf-lift-left var(--leaf-turn) ease-out var(--leaf-turn)
+      reverse both;
+  }
+}
+
+html:active-view-transition-type(flip-back) {
+  &::view-transition-old(leaf-left) {
+    z-index: 1;
+    transform-origin: right center;
+    animation: leaf-lift-left var(--leaf-turn) ease-in both;
+  }
+  &::view-transition-new(leaf-right) {
+    z-index: 1;
+    transform-origin: left center;
+    animation: leaf-lift-right var(--leaf-turn) ease-out var(--leaf-turn)
+      reverse both;
+  }
+}
+
+@keyframes leaf-lift-right {
+  from {
+    transform: perspective(2400px) rotateY(0deg);
+    filter: brightness(1);
+  }
+  to {
+    transform: perspective(2400px) rotateY(-90deg);
+    filter: brightness(0.8);
+  }
+}
+@keyframes leaf-lift-left {
+  from {
+    transform: perspective(2400px) rotateY(0deg);
+    filter: brightness(1);
+  }
+  to {
+    transform: perspective(2400px) rotateY(90deg);
+    filter: brightness(0.8);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .tech-track {
     animation: none;
@@ -218,5 +467,15 @@ body {
   ::view-transition-new(.flip-under),
   ::view-transition-new(.page-reveal) {
     animation: page-reveal 200ms ease both;
+  }
+  html:active-view-transition-type(flip-forward, flip-back) {
+    &::view-transition-old(leaf-left),
+    &::view-transition-old(leaf-right) {
+      animation: fade-out 200ms ease both;
+    }
+    &::view-transition-new(leaf-left),
+    &::view-transition-new(leaf-right) {
+      animation: page-reveal 200ms ease both;
+    }
   }
 }

@@ -67,7 +67,7 @@ export default function RootLayout({
     <html lang="en" className={`h-full antialiased ${ibmPlexSans.variable}`}>
       <body className="flex min-h-full flex-col">
         <SiteHeader />
-        <main className="mx-auto w-full max-w-3xl flex-1 px-4 sm:px-6">
+        <main className="book-main mx-auto w-full max-w-3xl flex-1 px-5 sm:px-6 spread:max-w-[1240px]">
           {children}
         </main>
         <SiteFooter />

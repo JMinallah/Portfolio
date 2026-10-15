@@ -1,4 +1,3 @@
-import Link from "next/link";
 import {
   siClaude,
   siExpress,
@@ -15,7 +14,6 @@ import {
   siTailwindcss,
   siTypescript,
 } from "simple-icons";
-import { siteConfig } from "@/lib/site-config";
 
 const technologies = [
   siReact,
@@ -35,11 +33,9 @@ const technologies = [
 ];
 
 export function SiteFooter() {
-  const year = new Date().getFullYear();
-
   return (
-    <footer style={{ viewTransitionName: "tech-strip" }} className="mt-12">
-      <div className="tech-strip overflow-hidden py-6">
+    <footer style={{ viewTransitionName: "tech-strip" }} className="mt-2 sm:mt-6">
+      <div className="tech-strip overflow-hidden py-5 sm:py-6">
         {/* The list is rendered twice so the loop is seamless. */}
         <ul aria-label="Technologies I use" className="tech-track flex w-max">
           {[...technologies, ...technologies].map((icon, i) => {

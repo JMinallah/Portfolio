@@ -1,8 +1,17 @@
 import { ViewTransition } from "react";
 
-// One page of the book. Which animation plays depends on the transition type
-// attached to the navigation (see lib/book.ts and globals.css).
-export function BookPage({ children }: { children: React.ReactNode }) {
+type BookPageProps = {
+  left: React.ReactNode;
+  right: React.ReactNode;
+  // On narrow screens both halves stack on one sheet; this hides one of them.
+  single?: "left" | "right";
+  centered?: boolean;
+};
+
+// One page of the book. Narrow screens get a single sheet; from 1200px wide it
+// opens into a two-page spread (see .book in globals.css). Which animation
+// plays depends on the navigation's transition type (lib/book.ts).
+export function BookPage({ left, right, single, centered }: BookPageProps) {
   return (
     <ViewTransition
       enter={{
@@ -21,8 +30,13 @@ export function BookPage({ children }: { children: React.ReactNode }) {
       }}
       default="none"
     >
-      <div className="book-page min-h-[26rem] px-6 py-10 sm:px-12 sm:py-14">
-        {children}
+      <div
+        className="book"
+        data-single={single}
+        data-centered={centered || undefined}
+      >
+        <section className="leaf leaf-left">{left}</section>
+        <section className="leaf leaf-right">{right}</section>
       </div>
     </ViewTransition>
   );

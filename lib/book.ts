@@ -1,13 +1,13 @@
-// The site reads like a book: the cover, then one page per tab. The order
-// here decides which way a page turns when moving between them.
+// The site reads like a book: one page per tab, starting with Home (the
+// cover). The order here decides which way a page turns when moving between them.
 export const bookPages = [
-  { href: "/", label: "Cover" },
+  { href: "/", label: "Home" },
   { href: "/work", label: "Work" },
   { href: "/about", label: "About" },
   { href: "/contact", label: "Contact" },
 ] as const;
 
-export const tabs = bookPages.slice(1);
+export const tabs = bookPages;
 
 export function pageIndex(pathname: string) {
   if (pathname === "/") return 0;
